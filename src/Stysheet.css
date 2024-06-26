@@ -1,0 +1,14 @@
+.sidebar {
+    transform: translateX(-100%);
+    transition: transform 500ms ease;
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+    visibility: hidden;
+    display: none;
+}
