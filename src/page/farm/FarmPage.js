@@ -10,6 +10,8 @@ const FarmPage = () => {
     const columnHeader = ['id', 'name', 'location']
     const [tableData, setTableData] = useState()
     const [loading, setLoading] = useState(false);
+    const [farmName, setFarmName] = useState();
+    const [farmLocation, setFarmLocation] = useState();
 
     const getAllFarm = async () => {
         try {
@@ -44,15 +46,41 @@ const FarmPage = () => {
         }
     }
 
+    const resetForm =()=>{
+        setFarmName('')
+        setFarmLocation('')
+    }
+
+    const confirmDelete = (record) => {
+        const result = window.confirm(`Do you want to delete ${record.farmName} ?`);
+        if (result) deleteFarm(record)
+    };
+
     useEffect(() => {
         getAllFarm()
     }, []);
+
+    const buttons = [
+        {
+            func: null,
+            name: 'Find Farm',
+            colorStyle: 'bg-green-600 hover:bg-green-700',
+        },
+        {
+            func: resetForm,
+            name: 'Reset Form',
+            colorStyle: 'bg-blue-600 hover:bg-blue-400',
+        },
+    ]
 
     return (
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Farm'}/>
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Farm'}
+                               farmName={farmName} setFarmName={setFarmName}
+                               farmLocation={farmLocation} setFarmLocation={setFarmLocation}
+                               buttons={buttons} />
 
                 <div className="relative m-5 w-2/4">
                     <div className="flex items-center  justify-end px-1 py-3">
@@ -68,7 +96,7 @@ const FarmPage = () => {
             {loading ? (
                 <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
             ) : tableData ? (
-                <TableComp tableData={tableData} columnHeader={columnHeader} deleteRecord={deleteFarm} />
+                <TableComp tableData={tableData} columnHeader={columnHeader} deleteRecord={confirmDelete} />
             ) : (
                 <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
             )}

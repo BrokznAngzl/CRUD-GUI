@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
-import {AiFillCaretLeft} from "react-icons/ai";
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
+import FormHeaderComp from "../../component/form/FormHeaderComp";
+import FormBodyComp from "./component/FormBodyComp";
 
 const EditFarmPage = () => {
     const {setPage, client, editData} = useContext(AppContext);
@@ -29,7 +30,7 @@ const EditFarmPage = () => {
         }
     }
 
-    const resetForm =()=>{
+    const resetForm = () => {
         setFarmName(editData.farmName);
         setFarmLocation(editData.location)
     }
@@ -65,56 +66,9 @@ const EditFarmPage = () => {
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <div className=" grid grid-cols-3 items-start justify-between px-5 py-4 rounded-t border">
-                    <button
-                        type="button"
-                    ><AiFillCaretLeft
-                        onClick={(e) => setPage('farm')}
-                        className="bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1.5 text-3xl items-start"/>
-                    </button>
-                    <h3 className="text-lg text-center font-semibold">
-                        Edit Farm
-                    </h3>
-                    <h3></h3>
-                </div>
-
-
-                <div className="p-6 space-y-6 border-x">
-                    <form>
-                        <div className="grid grid-cols-2 gap-6">
-                            <div className="col-span-full">
-                                <label
-                                    className="text-sm font-medium text-gray-900 block mb-2"
-                                >
-                                    Farm Name
-                                </label>
-                                <input
-                                    value={farmName}
-                                    onChange={(e)=>setFarmName(e.target.value)}
-                                    type="text"
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                    placeholder="Ichigo Farm"
-                                    required
-                                />
-                            </div>
-                            <div className="col-span-full">
-                                <label
-                                    className="text-sm font-medium text-gray-900 block mb-2"
-                                >
-                                    Farm Location
-                                </label>
-                                <textarea
-                                    value={farmLocation}
-                                    onChange={(e)=>setFarmLocation(e.target.value)}
-                                    rows="2"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                                    placeholder="Chak Gum Bor"
-                                ></textarea>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
+                <FormHeaderComp setPage={setPage} title={'Edit Farm'}/>
+                <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
+                              farmName={farmName} farmLocation={farmLocation}/>
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>

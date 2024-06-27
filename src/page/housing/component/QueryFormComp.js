@@ -1,12 +1,12 @@
 import React from "react";
-import FormHeaderComp from "../../../component/form/FormHeaderComp";
+import FormQueryHeaderComp from "../../../component/form/FormQueryHeaderComp";
 
 const QueryFormComp = (props) => {
     const {showForm, toggleForm, title} = props;
 
     return (
         <div className="bg-white border rounded-lg  relative m-5 w-2/4">
-            <FormHeaderComp showForm={showForm} toggle={toggleForm} title={title}/>
+            <FormQueryHeaderComp showForm={showForm} toggle={toggleForm} title={title}/>
 
             {showForm && (
                 <div className="p-6 space-y-6">

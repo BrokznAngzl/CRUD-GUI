@@ -1,23 +1,23 @@
-import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
+import {AiFillCaretLeft} from "react-icons/ai";
 import React from "react";
 
 const FormHeaderComp = (props) => {
-    const {toggleForm, showForm, title} = props
+    const {setPage, title} = props
+
     return (
-        <div className="flex items-start border-b justify-between px-6 py-4 rounded-t">
-            <h3 className="text-lg font-semibold">
-                {title}
-            </h3>
+        <div className=" grid grid-cols-3 items-start justify-between px-5 py-4 rounded-t border">
             <button
                 type="button"
-                onClick={(e) => toggleForm(!showForm)}
-                className="bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg p-1.5 ml-auto inline-flex items-center"
-            >
-                {showForm ? <AiFillCaretUp/> : <AiFillCaretDown/>}
+            ><AiFillCaretLeft
+                onClick={(e) => setPage('farm')}
+                className="bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1.5 text-3xl items-start"/>
             </button>
+            <h3 className="text-lg text-center font-semibold">
+                {title}
+            </h3>
+            <h3></h3>
         </div>
     )
-
 }
 
-export default FormHeaderComp
+export default FormHeaderComp;
