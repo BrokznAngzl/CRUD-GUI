@@ -6,7 +6,6 @@ const FormButtonComp = (props) => {
     return (
         <div className="flex justify-between p-6 border border-gray-200 rounded-b">
             {buttons.map((button, index) => {
-                console.log(button)
                 return (
                     <button
                         key={index}

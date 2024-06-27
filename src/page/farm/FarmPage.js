@@ -20,8 +20,7 @@ const FarmPage = () => {
             const response = await client.get('/farm')
             setTableData(await response.data)
             setLoading(false)
-        }
-        catch (error) {
+        } catch (error) {
             setLoading(false)
             console.error(error);
         }
@@ -46,7 +45,7 @@ const FarmPage = () => {
         }
     }
 
-    const resetForm =()=>{
+    const resetForm = () => {
         setFarmName('')
         setFarmLocation('')
     }
@@ -56,13 +55,38 @@ const FarmPage = () => {
         if (result) deleteFarm(record)
     };
 
+    const findFarm = async () => {
+        try {
+            if (!farmName && !farmLocation) {
+                getAllFarm()
+            } else {
+                const farm = {
+                    farmID: null,
+                    farmName: farmName,
+                    location: farmLocation,
+                }
+                setLoading(true)
+                setTableData()
+                const result = await client.post('/farm/find', farm);
+                const queryResult = await result.data
+                if (queryResult && queryResult.length > 0) {
+                    setTableData(queryResult)
+                }
+                setLoading(false)
+            }
+        } catch (e) {
+            setLoading(false)
+            console.log(e)
+        }
+    }
+
     useEffect(() => {
         getAllFarm()
     }, []);
 
     const buttons = [
         {
-            func: null,
+            func: findFarm,
             name: 'Find Farm',
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
@@ -80,7 +104,7 @@ const FarmPage = () => {
                 <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Farm'}
                                farmName={farmName} setFarmName={setFarmName}
                                farmLocation={farmLocation} setFarmLocation={setFarmLocation}
-                               buttons={buttons} />
+                               buttons={buttons}/>
 
                 <div className="relative m-5 w-2/4">
                     <div className="flex items-center  justify-end px-1 py-3">
@@ -96,7 +120,7 @@ const FarmPage = () => {
             {loading ? (
                 <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
             ) : tableData ? (
-                <TableComp tableData={tableData} columnHeader={columnHeader} deleteRecord={confirmDelete} />
+                <TableComp tableData={tableData} columnHeader={columnHeader} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
             )}
