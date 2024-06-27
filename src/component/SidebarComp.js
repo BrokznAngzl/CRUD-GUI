@@ -18,8 +18,8 @@ const SidebarComp = () => {
             href: 'farm'
         },
         {
-            title: 'Were House',
-            href: 'werehouse'
+            title: 'Housing',
+            href: 'housing'
         },
         {
             title: 'ABC',

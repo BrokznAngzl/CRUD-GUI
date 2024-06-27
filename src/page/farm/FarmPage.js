@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
-import FormComp from "./component/FormComp";
+import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
 import DataStatusMessage from "../../component/DataStatusMessage";
 
@@ -52,7 +52,7 @@ const FarmPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <FormComp toggleForm={setQueryForm} showForm={queryForm}/>
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Farm'}/>
 
                 <div className="relative m-5 w-2/4">
                     <div className="flex items-center  justify-end px-1 py-3">

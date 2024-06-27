@@ -1,14 +1,21 @@
 import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 import React from "react";
+import FormButtonComp from "../../../component/form/FormButtonComp";
 
-const FormComp = (props) => {
-    const {showForm, toggleForm} = props;
-
+const QueryFormComp = (props) => {
+    const {showForm, toggleForm, title} = props;
+    const buttons = [
+        {
+            func: null,
+            name: 'Find Farm',
+            colorStyle: 'bg-green-600 hover:bg-green-700',
+        }
+    ]
     return (
         <div className="bg-white border rounded-lg  relative m-5 w-2/4">
             <div className="flex items-start border-b justify-between px-6 py-4 rounded-t">
                 <h3 className="text-lg font-semibold">
-                    Farm
+                    {title}
                 </h3>
                 <button
                     type="button"
@@ -107,18 +114,19 @@ const FormComp = (props) => {
             )}
 
             {showForm && (
-                <div className="p-6 border-t border-gray-200 rounded-b">
-                    <button
-                        className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                        type="submit"
-                    >
-                        Save all
-                    </button>
-                </div>
+                <FormButtonComp buttons={buttons} />
+                // <div className="p-6 border-t border-gray-200 rounded-b">
+                //     <button
+                //         className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                //         type="submit"
+                //     >
+                //         Save all
+                //     </button>
+                // </div>
             )}
         </div>
     )
 
 }
 
-export default FormComp
+export default QueryFormComp

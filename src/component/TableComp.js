@@ -4,7 +4,7 @@ import {AiFillCaretLeft, AiFillCaretRight} from "react-icons/ai";
 import PaginationButtonComp from "./PaginationButtonComp";
 
 const TableComp = (props) => {
-    const {setPage} = useContext(AppContext);
+    const {setPage, setEditData} = useContext(AppContext);
     const {tableData, columnHeader, deleteRecord} = props
 
     const [pageNumber, setPageNumber] = useState(0); // Current page number
@@ -56,7 +56,10 @@ const TableComp = (props) => {
                                 ))
                             }
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
-                                <a onClick={(e) => setPage('editfarm')}
+                                <a onClick={(e) => {
+                                    setPage('editfarm')
+                                    setEditData(record)
+                                }}
                                    className="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 <a onClick={(e) => deleteRecord(record)}
                                    className="ml-2 text-red-600 hover:text-red-900">Delete</a>
