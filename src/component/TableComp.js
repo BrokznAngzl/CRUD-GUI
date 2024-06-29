@@ -5,7 +5,7 @@ import PaginationButtonComp from "./PaginationButtonComp";
 
 const TableComp = (props) => {
     const {setPage, setEditData} = useContext(AppContext);
-    const {tableData, columnHeader, deleteRecord} = props
+    const {tableData, columnHeader, deleteRecord, editePage} = props
 
     const [pageNumber, setPageNumber] = useState(0); // Current page number
     const recordPerPage = 10;
@@ -57,12 +57,12 @@ const TableComp = (props) => {
                             }
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
                                 <a onClick={(e) => {
-                                    setPage('editfarm')
+                                    setPage(editePage)
                                     setEditData(record)
                                 }}
-                                   className="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                   className="text-indigo-600 hover:text-indigo-900 cursor-pointer">Edit</a>
                                 <a onClick={(e) => deleteRecord(record)}
-                                   className="ml-2 text-red-600 hover:text-red-900">Delete</a>
+                                   className="ml-2 text-red-600 hover:text-red-900 cursor-pointer">Delete</a>
                             </td>
                         </tr>
                     ))

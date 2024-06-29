@@ -120,7 +120,8 @@ const FarmPage = () => {
             {loading ? (
                 <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
             ) : tableData ? (
-                <TableComp tableData={tableData} columnHeader={columnHeader} deleteRecord={confirmDelete}/>
+                <TableComp tableData={tableData} columnHeader={columnHeader}
+                           editePage={'editfarm'} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
             )}
