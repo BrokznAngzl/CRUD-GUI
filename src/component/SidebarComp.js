@@ -12,20 +12,24 @@ const SidebarComp = () => {
 
     const sideMenuObj = [
         {
-            title: 'Farm',
-            href: 'farm'
+            title: 'Customer',
+            href: 'customer'
         },
         {
             title: 'Housing',
             href: 'housing'
         },
         {
-            title: 'Customer',
-            href: 'customer'
-        },
-        {
             title: 'Breeds',
             href: 'breeds'
+        },
+        {
+            title: 'Import',
+            href: 'import'
+        },
+        {
+            title: 'Farm',
+            href: 'farm'
         },
     ]
 
