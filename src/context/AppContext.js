@@ -8,7 +8,7 @@ import AddHousingPage from "../page/housing/AddHousingPage";
 import EditHousing from "../page/housing/EditHousing";
 import CustomerPage from "../page/customer/CustomerPage";
 import AddCustomerPage from "../page/customer/AddCustomerPage";
-import EditCustomerPage from "../page/customer/EditHousingPage";
+import EditCustomerPage from "../page/customer/EditCustomerPage";
 
 export const AppContext = createContext();
 
