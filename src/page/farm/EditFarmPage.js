@@ -5,6 +5,7 @@ import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
+import FarmApi from "../../apiurl/FarmApi";
 
 const EditFarmPage = () => {
     const {setPage, client, editData} = useContext(AppContext);
@@ -22,7 +23,7 @@ const EditFarmPage = () => {
                 "location": farmLocation
             }
 
-            const response = await client.put('/farm', farm);
+            const response = await client.put(FarmApi.FARM, farm);
             setResponseCode(response.status)
             setAlertBox(true)
 

@@ -3,6 +3,8 @@ import TableComp from "../../component/TableComp";
 import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
 import DataStatusMessage from "../../component/DataStatusMessage";
+import FarmApi from "../../apiurl/FarmApi";
+import HousingApi from "../../apiurl/HousingApi";
 
 const HousingPage = () => {
     const [queryForm, setQueryForm] = useState(false);
@@ -17,7 +19,7 @@ const HousingPage = () => {
 
     const getAllFarm = async () => {
         try {
-            const response = await client.get('/farm')
+            const response = await client.get(FarmApi.FARM)
             setAllFarm(await response.data)
         } catch (e) {
             console.log(e)
@@ -31,7 +33,7 @@ const HousingPage = () => {
                 "stallQuanity": stallQuanity,
                 "farmID": farm
             }
-            const response = await client.post('/housing/find', housing)
+            const response = await client.post(HousingApi.FIND, housing)
             setTableData(await response.data)
         } catch (e) {
             console.log(e)
@@ -42,7 +44,7 @@ const HousingPage = () => {
         try {
             setLoading(true)
             setTableData()
-            const response = await client.get('/housing')
+            const response = await client.get(HousingApi.HOUSING)
             setTableData(await response.data)
             setLoading(false)
         } catch (error) {
@@ -56,7 +58,7 @@ const HousingPage = () => {
             const housing = {
                 "housingID": record.housingID
             }
-            const response = await client.delete('/housing', {
+            const response = await client.delete(HousingApi.HOUSING, {
                 data: housing
             })
 

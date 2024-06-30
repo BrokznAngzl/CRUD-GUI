@@ -1,29 +1,31 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
-import {AiFillCaretLeft} from "react-icons/ai";
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
-import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
+import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
+import CustomerApi from "../../apiurl/CustomerApi";
 
-const AddFarmPage = () => {
-    const {setPage, client} = useContext(AppContext);
+const EditCustomerPage = () => {
+    const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [farmName, setFarmName] = useState();
-    const [farmLocation, setFarmLocation] = useState()
+    const [customerName, setCustomerName] = useState(editData.customerName);
+    const [email, setEmail] = useState(editData.email);
+    const [phone, setPhone] = useState(editData.phone);
 
-    const createFarm = async () => {
+    const editCustomer = async () => {
         try {
-            const farm = {
-                "farmName": farmName,
-                "location": farmLocation
+            const customer = {
+                "customerID": editData.customerID,
+                "customerName": customerName,
+                "email": email,
+                "phone": phone
             }
 
-            const response = await client.post(FarmApi.FARM, farm);
+            const response = await client.put(CustomerApi.CUSTOMER, customer);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -32,21 +34,22 @@ const AddFarmPage = () => {
         }
     }
 
-    const resetForm =()=>{
-        setFarmName(null)
-        setFarmLocation(null)
+    const resetForm = () => {
+        setCustomerName(editData.customerName);
+        setEmail(editData.email);
+        setPhone(editData.phone)
     }
 
     const buttons = [
         {
-            func: createFarm,
-            name: 'Save Farm',
+            func: editCustomer,
+            name: 'Save Customer',
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
             name: 'Reset Form',
-            colorStyle: 'bg-blue-600 hover:bg-blue-700',
+            colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
 
     ]
@@ -65,24 +68,23 @@ const AddFarmPage = () => {
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
-                    responseCode === 201 ? (
-                        <SaveDataSuccessComp title={'farm'} />
+                    responseCode === 200 ? (
+                        <SaveDataSuccessComp title={'customer'}/>
                     ) : (
-                        <SaveDataFailedComp title={'farm'} />
+                        <SaveDataFailedComp title={'customer'}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Add Farm'} prevPage={'farm'}/>
-                <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
-                              farmName={farmName} farmLocation={farmLocation} />
+                <FormHeaderComp setPage={setPage} title={'Edit Customer'} prevPage={'customer'}/>
+                <FormBodyComp customerName={customerName} setCustomerName={setCustomerName}
+                              email={email} setEmail={setEmail} phone={phone} setPhone={setPhone}/>
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>
 
     )
-
 }
 
-export default AddFarmPage
+export default EditCustomerPage

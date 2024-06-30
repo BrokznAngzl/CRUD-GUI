@@ -2,10 +2,8 @@ import React, {useContext, useState} from "react";
 import '../Stysheet.css'
 import {AppContext} from '../context/AppContext';
 import SideMenuComp from "./SideMenuComp";
-import {TbTable} from "react-icons/tb";
+import {TbFileReport, TbTable} from "react-icons/tb";
 import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
-import { TbFileReport } from "react-icons/tb";
-import { GiHamburgerMenu } from "react-icons/gi";
 
 const SidebarComp = () => {
     const {sidebarItems, setSidebarItems, page, setPage} = useContext(AppContext);
@@ -22,14 +20,14 @@ const SidebarComp = () => {
             href: 'housing'
         },
         {
-            title: 'ABC',
-            href: 'ABC'
+            title: 'Customer',
+            href: 'customer'
         },
     ]
 
     const sideReportObj = [
         {
-            title: 'ABC Report',
+            title: 'TEST Report',
             href: 'abcreport'
         },
         {

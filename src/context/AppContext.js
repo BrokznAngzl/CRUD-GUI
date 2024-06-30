@@ -6,6 +6,9 @@ import axios from "axios";
 import HousingPage from "../page/housing/HousingPage";
 import AddHousingPage from "../page/housing/AddHousingPage";
 import EditHousing from "../page/housing/EditHousing";
+import CustomerPage from "../page/customer/CustomerPage";
+import AddCustomerPage from "../page/customer/AddCustomerPage";
+import EditCustomerPage from "../page/customer/EditHousingPage";
 
 export const AppContext = createContext();
 
@@ -19,9 +22,14 @@ export const SidebarProvider = ({children}) => {
         'farm': <FarmPage/>,
         'addfarm': <AddFarmPage/>,
         'editfarm': <EditFarmPage/>,
+
         'housing': <HousingPage/>,
         'addhousing': <AddHousingPage/>,
         'edithousing': <EditHousing/>,
+
+        'customer': <CustomerPage/>,
+        'addcustomer': <AddCustomerPage/>,
+        'editcustomer': <EditCustomerPage/>,
     };
 
     const client = axios.create({

@@ -5,6 +5,8 @@ import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
+import FarmApi from "../../apiurl/FarmApi";
+import HousingApi from "../../apiurl/HousingApi";
 
 const EditHousing = () => {
     const {setPage, client, editData} = useContext(AppContext);
@@ -17,7 +19,7 @@ const EditHousing = () => {
     const [farm, setFarm] = useState(null);
 
     const findFarm = async (name) => {
-        const response = await client.get('/farm/farmname', {
+        const response = await client.get(FarmApi.FARMNAME, {
             params: {
                 name: name
             }
@@ -34,7 +36,7 @@ const EditHousing = () => {
                 "farmID": farm,
             }
 
-            const response = await client.put('/housing', housing);
+            const response = await client.put(HousingApi.HOUSING, housing);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -45,7 +47,7 @@ const EditHousing = () => {
 
     const getAllFarm = async () => {
         try {
-            const response = await client.get('/farm')
+            const response = await client.get(FarmApi.FARM)
             setAllFarm(await response.data)
         } catch (e) {
             console.log(e)

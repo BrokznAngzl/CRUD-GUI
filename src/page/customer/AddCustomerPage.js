@@ -5,28 +5,28 @@ import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
-import HousingApi from "../../apiurl/HousingApi";
+import CustomerApi from "../../apiurl/CustomerApi";
 
 const AddFarmPage = () => {
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [housingName, setHousingName] = useState(null)
-    const [stallQuanity, setStallQuanity] = useState(null);
-    const [farm, setFarm] = useState();
-    const [allFarm, setAllFarm] = useState([])
+    const [customerName, setCustomerName] = useState();
+    const [email, setEmail] = useState();
+    const [phone, setPhone] = useState();
 
-    const createHousing = async () => {
+    const createCustomer = async () => {
         try {
-            const housing = {
-                "housingName": housingName,
-                "stallQuanity": stallQuanity,
-                "farmID": farm,
+            const customer = {
+                "customerName": customerName,
+                "email": email,
+                "phone": phone
             }
 
-            const response = await client.post(HousingApi.HOUSING, housing);
+            console.log(customer)
+
+            const response = await client.post(CustomerApi.CUSTOMER, customer);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -35,25 +35,16 @@ const AddFarmPage = () => {
         }
     }
 
-    const getAllFarm = async () => {
-        try {
-            const response = await client.get(FarmApi.FARM)
-            setAllFarm(await response.data)
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
     const resetForm = () => {
-        setHousingName('')
-        setStallQuanity('')
-        setFarm(null)
+        setCustomerName('')
+        setEmail('')
+        setPhone('')
     }
 
     const buttons = [
         {
-            func: createHousing,
-            name: 'Save Housing',
+            func: createCustomer,
+            name: 'Save Customer',
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -63,10 +54,6 @@ const AddFarmPage = () => {
         },
 
     ]
-
-    useEffect(() => {
-        getAllFarm()
-    }, []);
 
     useEffect(() => {
         if (alertBox) {
@@ -83,18 +70,17 @@ const AddFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 201 ? (
-                        <SaveDataSuccessComp title={'housing'} />
+                        <SaveDataSuccessComp title={'customer'}/>
                     ) : (
-                        <SaveDataFailedComp title={'housing'} />
+                        <SaveDataFailedComp title={'customer'}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Add Housing'} prevPage={'housing'}/>
-                <FormBodyComp setHousingName={setHousingName} housingName={housingName}
-                              setStallQuanity={setStallQuanity} stallQuanity={stallQuanity}
-                              setFarm={setFarm} farm={farm} allFarm={allFarm}/>
+                <FormHeaderComp setPage={setPage} title={'Add Customer'} prevPage={'customer'}/>
+                <FormBodyComp setCustomerName={setCustomerName} setEmail={setEmail} setPhone={setPhone}
+                              customerName={customerName} email={email} phone={phone}/>
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>
