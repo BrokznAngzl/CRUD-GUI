@@ -10,7 +10,7 @@ const HousingPage = () => {
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
     const columnHeader = ['id', 'name', 'stall quanity', 'farm']
-    const [tableData, setTableData] = useState()
+    const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [housingName, setHousingName] = useState(null)
     const [stallQuanity, setStallQuanity] = useState(null);
@@ -125,7 +125,7 @@ const HousingPage = () => {
 
             {loading ? (
                 <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
-            ) : tableData ? (
+            ) : (tableData && tableData.length !== 0) ? (
                 <TableComp tableData={tableData} columnHeader={columnHeader}
                            editePage={'edithousing'} deleteRecord={confirmDelete}/>
             ) : (

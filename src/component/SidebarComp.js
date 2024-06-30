@@ -23,6 +23,10 @@ const SidebarComp = () => {
             title: 'Customer',
             href: 'customer'
         },
+        {
+            title: 'Breeds',
+            href: 'breeds'
+        },
     ]
 
     const sideReportObj = [

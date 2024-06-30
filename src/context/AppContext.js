@@ -9,6 +9,9 @@ import EditHousing from "../page/housing/EditHousing";
 import CustomerPage from "../page/customer/CustomerPage";
 import AddCustomerPage from "../page/customer/AddCustomerPage";
 import EditCustomerPage from "../page/customer/EditCustomerPage";
+import BreedsPage from "../page/breeds/BreedsPage";
+import AddBreedsPage from "../page/breeds/AddBreedsPage";
+import EditBreedsPage from "../page/breeds/EditBreedsPage";
 
 export const AppContext = createContext();
 
@@ -30,6 +33,10 @@ export const SidebarProvider = ({children}) => {
         'customer': <CustomerPage/>,
         'addcustomer': <AddCustomerPage/>,
         'editcustomer': <EditCustomerPage/>,
+
+        'breeds': <BreedsPage/>,
+        'addbreeds': <AddBreedsPage/>,
+        'editbreeds': <EditBreedsPage/>
     };
 
     const client = axios.create({

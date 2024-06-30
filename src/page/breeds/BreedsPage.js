@@ -1,24 +1,24 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
-import QueryFormComp from "./component/QueryFormComp";
+// import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
 import DataStatusMessage from "../../component/DataStatusMessage";
-import FarmApi from "../../apiurl/FarmApi";
+import BreedsApi from "../../apiurl/BreedsApi";
+import QueryFormComp from "./component/QueryFormComp";
 
-const FarmPage = () => {
+const BreedsPage = () => {
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = ['id', 'name', 'location']
+    const columnHeader = ['id', 'name']
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
-    const [farmName, setFarmName] = useState();
-    const [farmLocation, setFarmLocation] = useState();
+    const [breedsName, setBreedsName] = useState();
 
-    const getAllFarm = async () => {
+    const getAllBreeds = async () => {
         try {
             setLoading(true)
             setTableData()
-            const response = await client.get(FarmApi.FARM)
+            const response = await client.get(BreedsApi.BREEDS)
             setTableData(await response.data)
             setLoading(false)
         } catch (error) {
@@ -27,18 +27,18 @@ const FarmPage = () => {
         }
     }
 
-    const deleteFarm = async (record) => {
+    const deleteBreeds = async (record) => {
         try {
-            const farm = {
-                "farmID": record.farmID
+            const breeds = {
+                "breedsID": record.breedsID
             }
-            const response = await client.delete(FarmApi.FARM, {
-                data: farm
+            const response = await client.delete(BreedsApi.BREEDS, {
+                data: breeds
             })
 
             if (response.status === 204) {
                 console.log('deleted successfully')
-                getAllFarm()
+                getAllBreeds()
 
             }
         } catch (e) {
@@ -47,28 +47,26 @@ const FarmPage = () => {
     }
 
     const resetForm = () => {
-        setFarmName('')
-        setFarmLocation('')
+        setBreedsName('')
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`Do you want to delete ${record.farmName} ?`);
-        if (result) deleteFarm(record)
+        const result = window.confirm(`Do you want to delete ${record.breedsName} ?`);
+        if (result) deleteBreeds(record)
     };
 
-    const findFarm = async () => {
+    const findBreeds = async () => {
         try {
-            if (!farmName && !farmLocation) {
-                getAllFarm()
+            if (!breedsName) {
+                getAllBreeds()
             } else {
-                const farm = {
-                    farmID: null,
-                    farmName: farmName,
-                    location: farmLocation,
+                const breeds = {
+                    breedsID: null,
+                    breedsName: breedsName
                 }
                 setLoading(true)
                 setTableData()
-                const result = await client.post(FarmApi.FIND, farm);
+                const result = await client.post(BreedsApi.FIND, breeds);
                 const queryResult = await result.data
                 if (queryResult && queryResult.length > 0) {
                     setTableData(queryResult)
@@ -82,13 +80,13 @@ const FarmPage = () => {
     }
 
     useEffect(() => {
-        getAllFarm()
+        getAllBreeds()
     }, []);
 
     const buttons = [
         {
-            func: findFarm,
-            name: 'Find Farm',
+            func: findBreeds,
+            name: 'Find Breeds',
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -102,17 +100,16 @@ const FarmPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Farm'}
-                               farmName={farmName} setFarmName={setFarmName}
-                               farmLocation={farmLocation} setFarmLocation={setFarmLocation}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Breeds'}
+                               breedsName={breedsName} setBreedsName={setBreedsName}
                                buttons={buttons}/>
 
                 <div className="relative m-5 w-2/4">
                     <div className="flex items-center  justify-end px-1 py-3">
                         <button
-                            onClick={(e) => setPage('addfarm')}
+                            onClick={(e) => setPage('addbreeds')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            Add Farm
+                            Add Breeds
                         </button>
                     </div>
                 </div>
@@ -122,7 +119,7 @@ const FarmPage = () => {
                 <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ?(
                 <TableComp tableData={tableData} columnHeader={columnHeader}
-                           editePage={'editfarm'} deleteRecord={confirmDelete}/>
+                           editePage={'editbreeds'} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
             )}
@@ -131,4 +128,4 @@ const FarmPage = () => {
     );
 };
 
-export default FarmPage;
+export default BreedsPage;
