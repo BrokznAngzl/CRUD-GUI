@@ -1,14 +1,16 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import DataStatusMessage from "../../component/DataStatusMessage";
 import BreedsApi from "../../apiurl/BreedsApi";
 import QueryFormComp from "./component/QueryFormComp";
 
 const BreedsPage = () => {
+    const { t } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = ['id', 'name']
+    const columnHeader = [t('table.id'), t('table.name')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [breedsName, setBreedsName] = useState();
@@ -50,7 +52,7 @@ const BreedsPage = () => {
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`Do you want to delete ${record.breedsName} ?`);
+        const result = window.confirm(`${t('alert.box.delete.request')} ${record.breedsName} ?`);
         if (result) deleteBreeds(record)
     };
 
@@ -85,12 +87,12 @@ const BreedsPage = () => {
     const buttons = [
         {
             func: findBreeds,
-            name: 'Find Breeds',
+            name: t('button.find.breeds'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
     ]
@@ -99,7 +101,7 @@ const BreedsPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Breeds'}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.breeds')}
                                breedsName={breedsName} setBreedsName={setBreedsName}
                                buttons={buttons}/>
 
@@ -108,19 +110,19 @@ const BreedsPage = () => {
                         <button
                             onClick={(e) => setPage('addbreeds')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            Add Breeds
+                            {t('form.header.breeds.add')}
                         </button>
                     </div>
                 </div>
             </div>
 
             {loading ? (
-                <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
+                <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ?(
                 <TableComp tableData={tableData} columnHeader={columnHeader}
                            editePage={'editbreeds'} deleteRecord={confirmDelete}/>
             ) : (
-                <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
+                <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>
             )}
 
         </div>

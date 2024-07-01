@@ -16,10 +16,15 @@
   "form.header.farm": "Farm",
   "form.header.farm.add": "Add Farm",
   "form.header.farm.edit": "Edit Farm",
+
   "form.header.customer": "Customer",
   "form.header.customer.add": "Add Customer",
   "form.header.customer.edit": "Edit Customer",
+
   "form.header.breeds": "Breeds",
+  "form.header.breeds.add": "Add Breeds",
+  "form.header.breeds.edit": "Edit Breeds",
+
   "form.header.import": "Import",
   "form.header.export": "Export",
   "form.header.death": "Death",
@@ -35,6 +40,9 @@
   "form.placeholder.customer.email": "MatherFather@Email.com",
   "form.label.customer.phone": "Phone",
   "form.placeholder.customer.phone": "0912345678",
+
+  "form.label.breeds.name": "Breeds Name",
+  "form.placeholder.breeds.name": "Kurobuta",
 
   "table.id": "id",
   "table.email": "email",

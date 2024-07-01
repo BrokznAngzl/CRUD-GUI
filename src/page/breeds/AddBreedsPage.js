@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
-import {AiFillCaretLeft} from "react-icons/ai";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
@@ -9,9 +9,9 @@ import SaveDataFailedComp from "../../component/SaveDataFailedComp";
 import BreedsApi from "../../apiurl/BreedsApi";
 
 const AddBreedsPage = () => {
+    const { t } = useTranslation();
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [breedsName, setBreedsName] = useState();
 
@@ -37,12 +37,12 @@ const AddBreedsPage = () => {
     const buttons = [
         {
             func: createBreeds,
-            name: 'Save Breeds',
+            name: t('button.save.breeds'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
 
@@ -64,15 +64,15 @@ const AddBreedsPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 201 ? (
-                        <SaveDataSuccessComp title={'breeds'} />
+                        <SaveDataSuccessComp title={t('global.breeds')} />
                     ) : (
-                        <SaveDataFailedComp title={'breeds'} />
+                        <SaveDataFailedComp title={t('global.breeds')} />
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Add Breeds'} prevPage={'breeds'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.breeds.add')} prevPage={'breeds'}/>
                 <FormBodyComp setBreedsName={setBreedsName} breedsName={breedsName}/>
                 <FormButtonComp buttons={buttons}/>
             </div>

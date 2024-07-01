@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
@@ -8,6 +9,7 @@ import SaveDataFailedComp from "../../component/SaveDataFailedComp";
 import BreedsApi from "../../apiurl/BreedsApi";
 
 const EditBreedsPage = () => {
+    const { t } = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [error, setError] = useState();
@@ -37,12 +39,12 @@ const EditBreedsPage = () => {
     const buttons = [
         {
             func: editBreeds,
-            name: 'Save Breeds',
+            name: t('button.save.breeds'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
 
@@ -64,15 +66,15 @@ const EditBreedsPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={'breeds'}/>
+                        <SaveDataSuccessComp title={t('global.breeds')}/>
                     ) : (
-                        <SaveDataFailedComp title={'breeds'}/>
+                        <SaveDataFailedComp title={t('global.breeds')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Edit Breeds'} prevPage={'breeds'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.breeds.edit')} prevPage={'breeds'}/>
                 <FormBodyComp breedsName={breedsName} setBreedsName={setBreedsName} />
                 <FormButtonComp buttons={buttons}/>
             </div>
