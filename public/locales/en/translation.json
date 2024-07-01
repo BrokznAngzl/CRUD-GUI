@@ -7,9 +7,12 @@
   "global.export": "export",
   "global.death":  "death",
 
+  "side.menu.table": "Table",
+  "side.menu.report": "Report",
   "side.menu.farm": "Farm",
   "side.menu.customer": "Customer",
   "side.menu.breeds": "Breeds",
+  "side.menu.housing": "housing",
   "side.menu.import": "Import",
   "side.menu.export": "Export",
   "side.menu.death": "Death",

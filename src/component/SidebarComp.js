@@ -1,34 +1,36 @@
 import React, {useContext, useState} from "react";
 import '../Stysheet.css'
 import {AppContext} from '../context/AppContext';
+import { useTranslation } from 'react-i18next';
 import SideMenuComp from "./SideMenuComp";
 import {TbFileReport, TbTable} from "react-icons/tb";
 import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 
 const SidebarComp = () => {
+    const {t} = useTranslation();
     const {sidebarItems, setSidebarItems, page, setPage} = useContext(AppContext);
     const [tableMenu, setTableMenu] = useState(true);
     const [reportMenu, setReportMenu] = useState(false);
 
     const sideMenuObj = [
         {
-            title: 'Customer',
+            title: t('side.menu.farm'),
             href: 'customer'
         },
         {
-            title: 'Housing',
+            title: t('side.menu.housing'),
             href: 'housing'
         },
         {
-            title: 'Breeds',
+            title: t('side.menu.breeds'),
             href: 'breeds'
         },
         {
-            title: 'Import',
+            title: t('side.menu.import'),
             href: 'import'
         },
         {
-            title: 'Farm',
+            title: t('side.menu.farm'),
             href: 'farm'
         },
     ]
@@ -59,7 +61,7 @@ const SidebarComp = () => {
                                 <p
                                     className="flex items-center px-4 py-2">
                                     <TbTable className="h-5 w-5 mr-2"/>
-                                    Table
+                                    {t('side.menu.table')}
                                 </p>
                             </div>
                             <div className={"flex justify-content items-center px-4 py-2"}>
@@ -81,7 +83,7 @@ const SidebarComp = () => {
                                 <p
                                     className="flex items-center px-4 py-2">
                                     <TbFileReport className="h-5 w-5 mr-2"/>
-                                    Report
+                                    {t('side.menu.report')}
                                 </p>
                             </div>
                             <div className={"flex justify-content items-center px-4 py-2"}>

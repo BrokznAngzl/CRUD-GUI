@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 const FarmPage = () => {
     const { t } = useTranslation();
+    const { i18n } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
     const columnHeader = [t('table.id'), t('table.name'), t('table.location')]
@@ -100,6 +101,7 @@ const FarmPage = () => {
         },
     ]
 
+    console.log('Current language:', i18n.language);
     return (
         <div className="w-full mt-16">
             {/* form */}
