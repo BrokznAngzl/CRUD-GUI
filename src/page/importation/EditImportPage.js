@@ -5,23 +5,48 @@ import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
 import HousingApi from "../../apiurl/HousingApi";
 import ImportApi from "../../apiurl/ImportApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 
 const AddFarmPage = () => {
-    const {setPage, client} = useContext(AppContext);
+    const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [date, setDate] = useState();
-    const [avgWeight, setAvgWeight] = useState()
-    const [quanity, setQuanity] = useState()
+    const [date, setDate] = useState(editData.date);
+    const [avgWeight, setAvgWeight] = useState(editData.avgWeight);
+    const [quanity, setQuanity] = useState(editData.quanity)
     const [breeds, setBreeds] = useState();
     const [housingID, setHousingID] = useState();
     const [allHousing, setAllHousing] = useState([]);
     const [allBreeds, setAllBreeds] = useState([]);
+
+    const findHousing = async (name) => {
+        try {
+            const response = await client.get(HousingApi.HOUSINGNAME, {
+                params: {
+                    name: name
+                }
+            })
+            setHousingID(await response.data.housingID)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const findBreeds = async (name) => {
+        try {
+            const response = await client.get(BreedsApi.BREEDSNAME, {
+                params: {
+                    name: name
+                }
+            })
+            setBreeds(await response.data.breedsID)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const createImport = async () => {
         try {
@@ -41,6 +66,26 @@ const AddFarmPage = () => {
             setAlertBox(true)
         }
     }
+
+    // const findImport = async () => {
+    //     try {
+    //         const importation = {
+    //             "date": date,
+    //             "avgWeight": avgWeight,
+    //             "quanity": quanity,
+    //             "breeds": breeds,
+    //             "housingID": housingID,
+    //         }
+    //
+    //         console.log(importation)
+    //         const response = await client.post(ImportApi.IMPORT, importation);
+    //         setResponseCode(response.status)
+    //         setAlertBox(true)
+    //
+    //     } catch (error) {
+    //         setAlertBox(true)
+    //     }
+    // }
 
     const getAllHousing = async () => {
         try {
@@ -79,10 +124,11 @@ const AddFarmPage = () => {
             name: 'Reset Form',
             colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
-
     ]
 
     useEffect(() => {
+        findHousing(editData.housingName)
+        findBreeds(editData.breedsName)
         getAllBreeds()
         getAllHousing()
     }, []);
@@ -102,15 +148,15 @@ const AddFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 201 ? (
-                        <SaveDataSuccessComp title={'import'} />
+                        <SaveDataSuccessComp title={'import'}/>
                     ) : (
-                        <SaveDataFailedComp title={'import'} />
+                        <SaveDataFailedComp title={'import'}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Add Import'} prevPage={'import'}/>
+                <FormHeaderComp setPage={setPage} title={'Edit Import'} prevPage={'import'}/>
                 <FormBodyComp
                     {...{
                         setDate,

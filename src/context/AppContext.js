@@ -14,6 +14,7 @@ import AddBreedsPage from "../page/breeds/AddBreedsPage";
 import EditBreedsPage from "../page/breeds/EditBreedsPage";
 import ImportPage from "../page/importation/ImportPage";
 import AddImportPage from "../page/importation/AddImportPage";
+import EditImportPage from "../page/importation/EditImportPage";
 
 export const AppContext = createContext();
 
@@ -42,7 +43,7 @@ export const SidebarProvider = ({children}) => {
 
         'import': <ImportPage/>,
         'addimport': <AddImportPage/>,
-        'editimport': <EditBreedsPage/>
+        'editimport': <EditImportPage/>
     };
 
     const client = axios.create({

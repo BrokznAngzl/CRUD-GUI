@@ -36,7 +36,7 @@ const FormBodyComp = (props) => {
                                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
-                            <option key={0} value={null} selected={breeds === null}>
+                            <option key={0} value='' selected={breeds === null}>
                                 Select Breeds
                             </option>
 
@@ -62,7 +62,7 @@ const FormBodyComp = (props) => {
                                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
-                            <option key={0} value={null} selected={breeds === null}>
+                            <option key={0} value='' selected={breeds === null}>
                                 Select Housing
                             </option>
 

@@ -54,17 +54,22 @@ const ImportPage = () => {
 
     const findImport = async () => {
         try {
+            setTableData()
+            setLoading(true)
             const importation = {
-                "date": date,
-                "avgWeight": avgWeight,
-                "quanity": quanity,
-                "breeds": breeds,
+                "startDate": date,
+                "endDate": date,
+                "breedsID": breeds,
                 "housingID": housingID,
+                "avgWeight": avgWeight,
+                "quanity": quanity
             }
             const response = await client.post(ImportApi.FIND, importation)
             setTableData(await response.data)
+            setLoading(false)
         } catch (e) {
             console.log(e)
+            setLoading(false)
         }
     }
 
@@ -89,10 +94,10 @@ const ImportPage = () => {
 
     const resetForm = () => {
         setDate('')
-        setBreeds('')
         setAvgWeight('')
         setQuanity('')
-        setHousingID('')
+        setBreeds(null)
+        setHousingID(null)
     }
 
     const confirmDelete = (record) => {
@@ -146,7 +151,7 @@ const ImportPage = () => {
                 <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
                 <TableComp tableData={tableData} columnHeader={columnHeader}
-                           editePage={'editImport'} deleteRecord={confirmDelete}/>
+                           editePage={'editimport'} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
             )}
