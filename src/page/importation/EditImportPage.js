@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
@@ -10,9 +11,9 @@ import ImportApi from "../../apiurl/ImportApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 
 const AddFarmPage = () => {
+    const {t} = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [date, setDate] = useState(editData.date);
     const [avgWeight, setAvgWeight] = useState(editData.avgWeight);
@@ -97,12 +98,12 @@ const AddFarmPage = () => {
     const buttons = [
         {
             func: saveImport,
-            name: 'Save Import',
+            name: t('button.save.import'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
     ]
@@ -130,15 +131,15 @@ const AddFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={'import'}/>
+                        <SaveDataSuccessComp title={t('global.import')}/>
                     ) : (
-                        <SaveDataFailedComp title={'import'}/>
+                        <SaveDataFailedComp title={t('global.import')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Edit Import'} prevPage={'import'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.import.edit')} prevPage={'import'}/>
                 <FormBodyComp
                     {...{
                         setDate,

@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const FormBodyComp = (props) => {
+    const {t} = useTranslation();
     const {
         setDate, date, setAvgWeight, avgWeight, setQuanity, quanity, setBreeds, breeds,
         setHousingID, housingID, allHousing, allBreeds
@@ -14,7 +16,7 @@ const FormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            Date
+                            {t('form.label.import.date')}
                         </label>
                         <input
                             value={date}
@@ -29,7 +31,7 @@ const FormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            Breeds
+                            {t('form.label.import.breeds')}
                         </label>
                         <select value={breeds} onChange={(e) => setBreeds(e.target.value)
                         }
@@ -37,7 +39,7 @@ const FormBodyComp = (props) => {
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
                             <option key={0} value='' selected={breeds === null}>
-                                Select Breeds
+                                {t('form.placeholder.import.breeds')}
                             </option>
 
                             {
@@ -55,7 +57,7 @@ const FormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            Housing
+                            {t('form.label.import.housing')}
                         </label>
                         <select value={housingID} onChange={(e) => setHousingID(e.target.value)
                         }
@@ -63,7 +65,7 @@ const FormBodyComp = (props) => {
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
                             <option key={0} value='' selected={breeds === null}>
-                                Select Housing
+                                {t('form.placeholder.import.housing')}
                             </option>
 
                             {
@@ -81,14 +83,14 @@ const FormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            Average Weight (KG)
+                            {t('form.label.import.weight')}
                         </label>
                         <input
                             value={avgWeight}
                             onChange={(e) => setAvgWeight(e.target.value)}
                             type="number"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="10"
+                            placeholder={t('form.placeholder.import.weight')}
                             required
                         />
                     </div>
@@ -96,14 +98,14 @@ const FormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            Quantity
+                            {t('form.label.import.quantity')}
                         </label>
                         <input
                             value={quanity}
                             onChange={(e) => setQuanity(e.target.value)}
                             type="number"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="20"
+                            placeholder={t('form.placeholder.import.quantity')}
                             required
                         />
                     </div>

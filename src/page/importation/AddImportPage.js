@@ -1,19 +1,19 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
 import HousingApi from "../../apiurl/HousingApi";
 import ImportApi from "../../apiurl/ImportApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 
 const AddFarmPage = () => {
+    const {t} = useTranslation();
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [date, setDate] = useState();
     const [avgWeight, setAvgWeight] = useState()
@@ -71,12 +71,12 @@ const AddFarmPage = () => {
     const buttons = [
         {
             func: createImport,
-            name: 'Save Import',
+            name: t('button.save.import'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
 
@@ -103,15 +103,15 @@ const AddFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 201 ? (
-                        <SaveDataSuccessComp title={'import'} />
+                        <SaveDataSuccessComp title={t('global.import')} />
                     ) : (
-                        <SaveDataFailedComp title={'import'} />
+                        <SaveDataFailedComp title={t('global.import')} />
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Add Import'} prevPage={'import'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.import.add')} prevPage={'import'}/>
                 <FormBodyComp
                     {...{
                         setDate,
