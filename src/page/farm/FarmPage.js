@@ -4,11 +4,13 @@ import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
 import DataStatusMessage from "../../component/DataStatusMessage";
 import FarmApi from "../../apiurl/FarmApi";
+import { useTranslation } from 'react-i18next';
 
 const FarmPage = () => {
+    const { t } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = ['id', 'name', 'location']
+    const columnHeader = [t('table.id'), t('table.name'), t('table.location')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [farmName, setFarmName] = useState();
@@ -37,7 +39,7 @@ const FarmPage = () => {
             })
 
             if (response.status === 204) {
-                console.log('deleted successfully')
+                console.log(t('alert.box.delete.success'))
                 getAllFarm()
 
             }
@@ -52,7 +54,7 @@ const FarmPage = () => {
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`Do you want to delete ${record.farmName} ?`);
+        const result = window.confirm(`${t('alert.box.delete')} ${record.farmName} ?`);
         if (result) deleteFarm(record)
     };
 
@@ -88,12 +90,12 @@ const FarmPage = () => {
     const buttons = [
         {
             func: findFarm,
-            name: 'Find Farm',
+            name: t('button.find.farm'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
     ]
@@ -102,7 +104,7 @@ const FarmPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Farm'}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.farm')}
                                farmName={farmName} setFarmName={setFarmName}
                                farmLocation={farmLocation} setFarmLocation={setFarmLocation}
                                buttons={buttons}/>
@@ -112,19 +114,19 @@ const FarmPage = () => {
                         <button
                             onClick={(e) => setPage('addfarm')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            Add Farm
+                            {t('form.header.farm.add')}
                         </button>
                     </div>
                 </div>
             </div>
 
             {loading ? (
-                <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
+                <DataStatusMessage msg={t("status.loading")} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ?(
                 <TableComp tableData={tableData} columnHeader={columnHeader}
                            editePage={'editfarm'} deleteRecord={confirmDelete}/>
             ) : (
-                <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
+                <DataStatusMessage msg={t("status.no.data")} textColor={'text-red-600'}/>
             )}
 
         </div>

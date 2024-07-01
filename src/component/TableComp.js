@@ -1,9 +1,11 @@
 import React, {useContext, useState} from "react";
 import {AppContext} from "../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import {AiFillCaretLeft, AiFillCaretRight} from "react-icons/ai";
 import PaginationButtonComp from "./PaginationButtonComp";
 
 const TableComp = (props) => {
+    const { t } = useTranslation();
     const {setPage, setEditData} = useContext(AppContext);
     const {tableData, columnHeader, deleteRecord, editePage} = props
 
@@ -60,9 +62,9 @@ const TableComp = (props) => {
                                     setPage(editePage)
                                     setEditData(record)
                                 }}
-                                   className="text-indigo-600 hover:text-indigo-900 cursor-pointer">Edit</a>
+                                   className="text-indigo-600 hover:text-indigo-900 cursor-pointer">{t('button.edit')}</a>
                                 <a onClick={(e) => deleteRecord(record)}
-                                   className="ml-2 text-red-600 hover:text-red-900 cursor-pointer">Delete</a>
+                                   className="ml-2 text-red-600 hover:text-red-900 cursor-pointer">{t('button.delete')}</a>
                             </td>
                         </tr>
                     ))

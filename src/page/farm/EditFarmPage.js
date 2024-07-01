@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
@@ -8,9 +9,9 @@ import SaveDataFailedComp from "../../component/SaveDataFailedComp";
 import FarmApi from "../../apiurl/FarmApi";
 
 const EditFarmPage = () => {
+    const { t } = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [farmName, setFarmName] = useState(editData.farmName);
     const [farmLocation, setFarmLocation] = useState(editData.location)
@@ -40,12 +41,12 @@ const EditFarmPage = () => {
     const buttons = [
         {
             func: editFarm,
-            name: 'Save Farm',
+            name: t('button.save.farm'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
 
@@ -67,15 +68,15 @@ const EditFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={'farm'} />
+                        <SaveDataSuccessComp title={t('global.farm')} />
                     ) : (
-                        <SaveDataFailedComp title={'farm'} />
+                        <SaveDataFailedComp title={t('global.farm')} />
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Edit Farm'} prevPage={'farm'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.farm.edit')} prevPage={'farm'}/>
                 <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
                               farmName={farmName} farmLocation={farmLocation}/>
                 <FormButtonComp buttons={buttons}/>

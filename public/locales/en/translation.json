@@ -1,0 +1,56 @@
+{
+  "global.farm": "farm",
+  "global.customer": "customer",
+  "global.breeds": "breeds",
+  "global.import": "import",
+  "global.export": "export",
+  "global.death":  "death",
+
+  "side.menu.farm": "Farm",
+  "side.menu.customer": "Customer",
+  "side.menu.breeds": "Breeds",
+  "side.menu.import": "Import",
+  "side.menu.export": "Export",
+  "side.menu.death": "Death",
+
+  "form.header.farm": "Farm",
+  "form.header.farm.add": "Add Farm",
+  "form.header.farm.edit": "Edit Farm",
+  "form.header.customer": "Customer",
+  "form.header.breeds": "Breeds",
+  "form.header.import": "Import",
+  "form.header.export": "Export",
+  "form.header.death": "Death",
+
+  "form.label.farm.name": "Farm Name",
+  "form.placeholder.farm.name": "Ichigo Farm",
+  "form.label.farm.location": "Farm Location",
+  "form.placeholder.farm.location": "Chak Gam Bor",
+
+  "table.id": "id",
+  "table.name": "name",
+  "table.location": "location",
+  "table.farm": "farm",
+  "table.management": "management",
+
+  "button.edit": "Edit",
+  "button.add": "Add",
+  "button.delete": "Delete",
+  "button.reset.form": "Reset Form",
+
+  "button.find.farm": "Find Farm",
+
+  "button.save.farm": "Save Farm",
+  "button.save.customer": "Save Customer",
+  "button.save.breeds": "Save Breeds",
+  "button.save.import": "Save Import",
+  "button.save.export" :"Save Export",
+  "button.save.death" : "Save Death",
+
+  "status.loading": "Loading Data...",
+  "status.no.data": "No Data Found",
+
+  "alert.box.delete.request": "Do you want to delete",
+  "alert.box.delete.success": "deleted successfully"
+
+}
