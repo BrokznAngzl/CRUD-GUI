@@ -7,8 +7,7 @@ import FarmApi from "../../apiurl/FarmApi";
 import { useTranslation } from 'react-i18next';
 
 const FarmPage = () => {
-    const { t } = useTranslation();
-    const { i18n } = useTranslation();
+    const { t,i18n } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
     const columnHeader = [t('table.id'), t('table.name'), t('table.location')]
