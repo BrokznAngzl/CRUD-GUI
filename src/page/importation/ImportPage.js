@@ -5,7 +5,7 @@ import DataStatusMessage from "../../component/DataStatusMessage";
 import HousingApi from "../../apiurl/HousingApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 import ImportApi from "../../apiurl/ImportApi";
-import QueryFormBodyComp from "./component/QueryFormBodyComp";
+import QueryFormComp from "./component/QueryFormComp";
 
 const ImportPage = () => {
     const [queryForm, setQueryForm] = useState(false);
@@ -101,8 +101,8 @@ const ImportPage = () => {
         setEndDate('')
         setAvgWeight('')
         setQuanity('')
-        setBreeds(null)
-        setHousingID(null)
+        setBreeds('')
+        setHousingID('')
     }
 
     const confirmDelete = (record) => {
@@ -134,23 +134,23 @@ const ImportPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormBodyComp toggleForm={setQueryForm} showForm={queryForm} title={'Import'} buttons={buttons}
-                                   {...{
-                                       startDate,
-                                       setStartDate,
-                                       endDate,
-                                       setEndDate,
-                                       breeds,
-                                       setBreeds,
-                                       housingID,
-                                       setHousingID,
-                                       avgWeight,
-                                       setAvgWeight,
-                                       quanity,
-                                       setQuanity,
-                                       allBreeds,
-                                       allHousing
-                                   }}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Import'} buttons={buttons}
+                               {...{
+                                   startDate,
+                                   setStartDate,
+                                   endDate,
+                                   setEndDate,
+                                   breeds,
+                                   setBreeds,
+                                   housingID,
+                                   setHousingID,
+                                   avgWeight,
+                                   setAvgWeight,
+                                   quanity,
+                                   setQuanity,
+                                   allBreeds,
+                                   allHousing
+                               }}
                 />
 
                 <div className="relative m-5 w-2/4">

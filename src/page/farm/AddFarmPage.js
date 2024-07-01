@@ -33,8 +33,8 @@ const AddFarmPage = () => {
     }
 
     const resetForm =()=>{
-        setFarmName(null)
-        setFarmLocation(null)
+        setFarmName('')
+        setFarmLocation('')
     }
 
     const buttons = [

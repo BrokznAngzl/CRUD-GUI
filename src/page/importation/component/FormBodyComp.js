@@ -21,7 +21,7 @@ const FormBodyComp = (props) => {
                             onChange={(e) => setDate(e.target.value)}
                             type="date"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Kawaii House"
+                            placeholder="30-06-2024"
                             required
                         />
                     </div>
@@ -81,14 +81,14 @@ const FormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            Average Weight
+                            Average Weight (KG)
                         </label>
                         <input
                             value={avgWeight}
                             onChange={(e) => setAvgWeight(e.target.value)}
                             type="number"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Kawaii House"
+                            placeholder="10"
                             required
                         />
                     </div>
@@ -103,7 +103,7 @@ const FormBodyComp = (props) => {
                             onChange={(e) => setQuanity(e.target.value)}
                             type="number"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Kawaii House"
+                            placeholder="20"
                             required
                         />
                     </div>

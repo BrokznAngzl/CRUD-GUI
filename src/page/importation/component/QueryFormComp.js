@@ -1,7 +1,7 @@
 import React from "react";
 import FormQueryHeaderComp from "../../../component/form/FormQueryHeaderComp";
-import FormBodyComp from "./FormBodyComp";
 import FormButtonComp from "../../../component/form/FormButtonComp";
+import QueryFormBodyComp from "./QueryFormBodyComp";
 
 const QueryFormComp = (props) => {
     const {
@@ -15,7 +15,7 @@ const QueryFormComp = (props) => {
             <FormQueryHeaderComp showForm={showForm} toggleForm={toggleForm} title={title}/>
 
             {showForm && (
-                <FormBodyComp
+                <QueryFormBodyComp
                     {...{
                         startDate, setStartDate, endDate, setEndDate,
                         setAvgWeight, avgWeight, setQuanity, quanity,
