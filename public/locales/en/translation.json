@@ -2,6 +2,7 @@
   "global.farm": "farm",
   "global.customer": "customer",
   "global.breeds": "breeds",
+  "global.housing": "housing",
   "global.import": "import",
   "global.export": "export",
   "global.death":  "death",
@@ -25,6 +26,10 @@
   "form.header.breeds.add": "Add Breeds",
   "form.header.breeds.edit": "Edit Breeds",
 
+  "form.header.housing": "Housing",
+  "form.header.housing.add": "Add Housing",
+  "form.header.housing.edit": "Edit Housing",
+
   "form.header.import": "Import",
   "form.header.export": "Export",
   "form.header.death": "Death",
@@ -40,6 +45,13 @@
   "form.placeholder.customer.email": "MatherFather@Email.com",
   "form.label.customer.phone": "Phone",
   "form.placeholder.customer.phone": "0912345678",
+
+  "form.label.housing.name": "Housing Name",
+  "form.placeholder.housing.name": "Kawaii House",
+  "form.label.housing.stall": "Stall Quantity",
+  "form.placeholder.housing.stall": "10",
+  "form.label.housing.farm": "Farm",
+  "form.placeholder.housing.farm": "Select Farm",
 
   "form.label.breeds.name": "Breeds Name",
   "form.placeholder.breeds.name": "Kurobuta",
@@ -60,6 +72,7 @@
   "button.find.farm": "Find Farm",
   "button.find.customer": "Find Customer",
   "button.find.breeds": "Find Breeds",
+  "button.find.housing": "Find Housing",
   "button.find.import": "Find Import",
   "button.find.export": "Find Export",
   "button.find.death": "Find Death",
@@ -67,6 +80,7 @@
   "button.save.farm": "Save Farm",
   "button.save.customer": "Save Customer",
   "button.save.breeds": "Save Breeds",
+  "button.save.housing": "Save Housing",
   "button.save.import": "Save Import",
   "button.save.export" :"Save Export",
   "button.save.death" : "Save Death",

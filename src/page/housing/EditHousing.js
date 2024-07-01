@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
@@ -9,6 +10,7 @@ import FarmApi from "../../apiurl/FarmApi";
 import HousingApi from "../../apiurl/HousingApi";
 
 const EditHousing = () => {
+    const {t} = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [error, setError] = useState();
@@ -63,12 +65,12 @@ const EditHousing = () => {
     const buttons = [
         {
             func: editFarm,
-            name: 'Save Housing',
+            name: t('button.save.housing'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
 
@@ -95,15 +97,15 @@ const EditHousing = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={'housing'}/>
+                        <SaveDataSuccessComp title={t('global.housing')}/>
                     ) : (
-                        <SaveDataFailedComp title={'housing'}/>
+                        <SaveDataFailedComp title={t('global.housing')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Edit Housing'} prevPage={'housing'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.housing.edit')} prevPage={'housing'}/>
                 <FormBodyComp setHousingName={setHousingName} housingName={housingName}
                               setStallQuanity={setStallQuanity} stallQuanity={stallQuanity}
                               setFarm={setFarm} farm={farm} allFarm={allFarm}/>

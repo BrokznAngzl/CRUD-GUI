@@ -2,11 +2,13 @@ import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
 import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import DataStatusMessage from "../../component/DataStatusMessage";
 import FarmApi from "../../apiurl/FarmApi";
 import HousingApi from "../../apiurl/HousingApi";
 
 const HousingPage = () => {
+    const { t } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
     const columnHeader = ['id', 'name', 'stall quanity', 'farm']
@@ -86,19 +88,19 @@ const HousingPage = () => {
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`Do you want to delete ${record.housingName} ?`);
+        const result = window.confirm(`${t('alert.box.delete.request')} ${record.housingName} ?`);
         if (result) deleteHousing(record)
     };
 
     const buttons = [
         {
             func: findHousing,
-            name: 'Find Housing',
+            name: t('button.find.housing'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
 
@@ -113,7 +115,7 @@ const HousingPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Housing'}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.housing')}
                                setHousingName={setHousingName} housingName={housingName}
                                setStallQuanity={setStallQuanity} stallQuanity={stallQuanity}
                                setFarm={setFarm} farm={farm} allFarm={allFarm} buttons={buttons}
@@ -124,19 +126,19 @@ const HousingPage = () => {
                         <button
                             onClick={(e) => setPage('addhousing')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            Add Housing
+                            {t('form.header.housing.add')}
                         </button>
                     </div>
                 </div>
             </div>
 
             {loading ? (
-                <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
+                <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
                 <TableComp tableData={tableData} columnHeader={columnHeader}
                            editePage={'edithousing'} deleteRecord={confirmDelete}/>
             ) : (
-                <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
+                <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>
             )}
 
         </div>
