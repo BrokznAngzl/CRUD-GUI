@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
@@ -8,9 +9,9 @@ import SaveDataFailedComp from "../../component/SaveDataFailedComp";
 import CustomerApi from "../../apiurl/CustomerApi";
 
 const EditCustomerPage = () => {
+    const { t } = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [customerName, setCustomerName] = useState(editData.customerName);
     const [email, setEmail] = useState(editData.email);
@@ -43,12 +44,12 @@ const EditCustomerPage = () => {
     const buttons = [
         {
             func: editCustomer,
-            name: 'Save Customer',
+            name: t('button.save.customer'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
 
@@ -70,15 +71,15 @@ const EditCustomerPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={'customer'}/>
+                        <SaveDataSuccessComp title={t('global.customer')}/>
                     ) : (
-                        <SaveDataFailedComp title={'customer'}/>
+                        <SaveDataFailedComp title={t('global.customer')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={'Edit Customer'} prevPage={'customer'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.customer.edit')} prevPage={'customer'}/>
                 <FormBodyComp customerName={customerName} setCustomerName={setCustomerName}
                               email={email} setEmail={setEmail} phone={phone} setPhone={setPhone}/>
                 <FormButtonComp buttons={buttons}/>

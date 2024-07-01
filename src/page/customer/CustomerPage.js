@@ -1,14 +1,16 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
 import {AppContext} from "../../context/AppContext";
+import { useTranslation } from 'react-i18next';
 import DataStatusMessage from "../../component/DataStatusMessage";
 import CustomerApi from "../../apiurl/CustomerApi";
 import QueryFormComp from "./component/QueryFormComp";
 
 const CustomerPage = () => {
+    const { t } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = ['id', 'name', 'email', 'phone']
+    const columnHeader = [t('table.id'), t('table.name'), t('table.email'), t('table.phone')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [customerName, setCustomerName] = useState();
@@ -58,7 +60,7 @@ const CustomerPage = () => {
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`Do you want to delete ${record.customerName} ?`);
+        const result = window.confirm(`${t('alert.box.delete.request')} ${record.customerName} ?`);
         if (result) deleteCustomer(record)
     };
 
@@ -92,19 +94,15 @@ const CustomerPage = () => {
         getAllCustomer()
     }, []);
 
-    useEffect(() => {
-        console.log('phone: ', phone)
-    }, [phone]);
-
     const buttons = [
         {
             func: findFarm,
-            name: 'Find Farm',
+            name: t('button.find.customer'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
-            name: 'Reset Form',
+            name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
     ]
@@ -113,7 +111,7 @@ const CustomerPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Customer'}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.customer')}
                                setCustomerName={setCustomerName} setEmail={setEmail} setPhone={handlePhone}
                                customerName={customerName} email={email} phone={phone} buttons={buttons}/>
 
@@ -122,19 +120,19 @@ const CustomerPage = () => {
                         <button
                             onClick={(e) => setPage('addcustomer')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            Add Customer
+                            {t('form.header.customer.add')}
                         </button>
                     </div>
                 </div>
             </div>
 
             {loading ? (
-                <DataStatusMessage msg="Loading Data..." textColor={'text-gray-600'}/>
+                <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
                 <TableComp tableData={tableData} columnHeader={columnHeader}
                            editePage={'editcustomer'} deleteRecord={confirmDelete}/>
             ) : (
-                <DataStatusMessage msg="No Data Found" textColor={'text-red-600'}/>
+                <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>
             )}
 
         </div>

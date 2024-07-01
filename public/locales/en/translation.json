@@ -17,6 +17,8 @@
   "form.header.farm.add": "Add Farm",
   "form.header.farm.edit": "Edit Farm",
   "form.header.customer": "Customer",
+  "form.header.customer.add": "Add Customer",
+  "form.header.customer.edit": "Edit Customer",
   "form.header.breeds": "Breeds",
   "form.header.import": "Import",
   "form.header.export": "Export",
@@ -27,7 +29,16 @@
   "form.label.farm.location": "Farm Location",
   "form.placeholder.farm.location": "Chak Gam Bor",
 
+  "form.label.customer.name": "Customer Name",
+  "form.placeholder.customer.name": "Forrest Gump",
+  "form.label.customer.email": "Email",
+  "form.placeholder.customer.email": "MatherFather@Email.com",
+  "form.label.customer.phone": "Phone",
+  "form.placeholder.customer.phone": "0912345678",
+
   "table.id": "id",
+  "table.email": "email",
+  "table.phone": "phone",
   "table.name": "name",
   "table.location": "location",
   "table.farm": "farm",
@@ -39,6 +50,11 @@
   "button.reset.form": "Reset Form",
 
   "button.find.farm": "Find Farm",
+  "button.find.customer": "Find Customer",
+  "button.find.breeds": "Find Breeds",
+  "button.find.import": "Find Import",
+  "button.find.export": "Find Export",
+  "button.find.death": "Find Death",
 
   "button.save.farm": "Save Farm",
   "button.save.customer": "Save Customer",

@@ -9,7 +9,6 @@ const QueryFormComp = (props) => {
         setPhone, customerName, email, phone, buttons
     } = props;
 
-
     return (
         <div className="bg-white border rounded-lg  relative m-5 w-2/4">
             <div className="flex items-start border-b justify-between px-6 py-4 rounded-t">

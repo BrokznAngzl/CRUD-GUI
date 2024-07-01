@@ -54,7 +54,7 @@ const FarmPage = () => {
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`${t('alert.box.delete')} ${record.farmName} ?`);
+        const result = window.confirm(`${t('alert.box.delete.request')} ${record.farmName} ?`);
         if (result) deleteFarm(record)
     };
 
