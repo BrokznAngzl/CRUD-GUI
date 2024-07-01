@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
-// import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
 import DataStatusMessage from "../../component/DataStatusMessage";
 import BreedsApi from "../../apiurl/BreedsApi";

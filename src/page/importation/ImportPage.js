@@ -65,8 +65,10 @@ const ImportPage = () => {
                 "quanity": quanity
             }
             const response = await client.post(ImportApi.FIND, importation)
-            setTableData(await response.data)
-            setLoading(false)
+            const queryResult = await response.data
+            if (queryResult && queryResult.length > 0) {
+                setTableData(queryResult)
+            }
         } catch (e) {
             console.log(e)
             setLoading(false)

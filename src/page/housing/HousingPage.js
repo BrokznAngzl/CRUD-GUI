@@ -28,14 +28,21 @@ const HousingPage = () => {
 
     const findHousing = async () => {
         try {
+            setLoading(true)
+            setTableData()
             const housing = {
                 "housingName": housingName,
                 "stallQuanity": stallQuanity,
                 "farmID": farm
             }
             const response = await client.post(HousingApi.FIND, housing)
-            setTableData(await response.data)
+            const queryResult = await response.data
+            if (queryResult && queryResult.length > 0) {
+                setTableData(queryResult)
+            }
+            setLoading(false)
         } catch (e) {
+            setLoading(false)
             console.log(e)
         }
     }
