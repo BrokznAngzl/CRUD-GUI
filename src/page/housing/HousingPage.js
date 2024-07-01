@@ -11,7 +11,7 @@ const HousingPage = () => {
     const { t } = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = ['id', 'name', 'stall quanity', 'farm']
+    const columnHeader = [t('table.id'), t('table.name'), t('table.stall'), t('table.farm')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [housingName, setHousingName] = useState(null)
