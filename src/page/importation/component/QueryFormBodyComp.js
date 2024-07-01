@@ -3,7 +3,7 @@ import FormQueryHeaderComp from "../../../component/form/FormQueryHeaderComp";
 import FormBodyComp from "./FormBodyComp";
 import FormButtonComp from "../../../component/form/FormButtonComp";
 
-const QueryFormComp = (props) => {
+const QueryFormBodyComp = (props) => {
     const {
         toggleForm, showForm, title, buttons,
         startDate, setStartDate, endDate, setEndDate, breeds, setBreeds, housingID, setHousingID, avgWeight,
@@ -33,4 +33,4 @@ const QueryFormComp = (props) => {
 
 }
 
-export default QueryFormComp
+export default QueryFormBodyComp

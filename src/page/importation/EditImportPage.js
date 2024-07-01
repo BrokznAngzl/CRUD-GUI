@@ -48,9 +48,10 @@ const AddFarmPage = () => {
         }
     }
 
-    const createImport = async () => {
+    const saveImport = async () => {
         try {
             const importation = {
+                "importID": editData.importID,
                 "date": date,
                 "avgWeight": avgWeight,
                 "quanity": quanity,
@@ -58,7 +59,7 @@ const AddFarmPage = () => {
                 "housingID": housingID,
             }
 
-            const response = await client.post(ImportApi.IMPORT, importation);
+            const response = await client.put(ImportApi.IMPORT, importation);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -66,26 +67,6 @@ const AddFarmPage = () => {
             setAlertBox(true)
         }
     }
-
-    // const findImport = async () => {
-    //     try {
-    //         const importation = {
-    //             "date": date,
-    //             "avgWeight": avgWeight,
-    //             "quanity": quanity,
-    //             "breeds": breeds,
-    //             "housingID": housingID,
-    //         }
-    //
-    //         console.log(importation)
-    //         const response = await client.post(ImportApi.IMPORT, importation);
-    //         setResponseCode(response.status)
-    //         setAlertBox(true)
-    //
-    //     } catch (error) {
-    //         setAlertBox(true)
-    //     }
-    // }
 
     const getAllHousing = async () => {
         try {
@@ -115,7 +96,7 @@ const AddFarmPage = () => {
 
     const buttons = [
         {
-            func: createImport,
+            func: saveImport,
             name: 'Save Import',
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
@@ -137,6 +118,7 @@ const AddFarmPage = () => {
         if (alertBox) {
             const timer = setTimeout(() => {
                 setAlertBox(false);
+                setResponseCode()
             }, 2000);
 
             return () => clearTimeout(timer);
@@ -147,7 +129,7 @@ const AddFarmPage = () => {
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
-                    responseCode === 201 ? (
+                    responseCode === 200 ? (
                         <SaveDataSuccessComp title={'import'}/>
                     ) : (
                         <SaveDataFailedComp title={'import'}/>

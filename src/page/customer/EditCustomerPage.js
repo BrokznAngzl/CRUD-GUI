@@ -58,6 +58,7 @@ const EditCustomerPage = () => {
         if (alertBox) {
             const timer = setTimeout(() => {
                 setAlertBox(false);
+                setResponseCode()
             }, 2000);
 
             return () => clearTimeout(timer);

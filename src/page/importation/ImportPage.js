@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
-import QueryFormComp from "./component/QueryFormComp";
 import {AppContext} from "../../context/AppContext";
 import DataStatusMessage from "../../component/DataStatusMessage";
 import HousingApi from "../../apiurl/HousingApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 import ImportApi from "../../apiurl/ImportApi";
+import QueryFormBodyComp from "./component/QueryFormBodyComp";
 
 const ImportPage = () => {
     const [queryForm, setQueryForm] = useState(false);
@@ -13,7 +13,8 @@ const ImportPage = () => {
     const columnHeader = ['id', 'date', 'breeds', 'housing', 'average weight', 'quantity']
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
-    const [date, setDate] = useState();
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
     const [avgWeight, setAvgWeight] = useState()
     const [quanity, setQuanity] = useState()
     const [breeds, setBreeds] = useState();
@@ -54,11 +55,11 @@ const ImportPage = () => {
 
     const findImport = async () => {
         try {
-            setTableData()
             setLoading(true)
+            setTableData()
             const importation = {
-                "startDate": date,
-                "endDate": date,
+                "startDate": startDate,
+                "endDate": endDate,
                 "breedsID": breeds,
                 "housingID": housingID,
                 "avgWeight": avgWeight,
@@ -69,6 +70,7 @@ const ImportPage = () => {
             if (queryResult && queryResult.length > 0) {
                 setTableData(queryResult)
             }
+            setLoading(false)
         } catch (e) {
             console.log(e)
             setLoading(false)
@@ -95,7 +97,8 @@ const ImportPage = () => {
     }
 
     const resetForm = () => {
-        setDate('')
+        setStartDate('')
+        setEndDate('')
         setAvgWeight('')
         setQuanity('')
         setBreeds(null)
@@ -131,11 +134,23 @@ const ImportPage = () => {
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={'Import'} buttons={buttons}
-                               {...{
-                                   date, setDate, breeds, setBreeds, housingID, setHousingID, avgWeight, setAvgWeight,
-                                   quanity, setQuanity, allBreeds, allHousing
-                               }}
+                <QueryFormBodyComp toggleForm={setQueryForm} showForm={queryForm} title={'Import'} buttons={buttons}
+                                   {...{
+                                       startDate,
+                                       setStartDate,
+                                       endDate,
+                                       setEndDate,
+                                       breeds,
+                                       setBreeds,
+                                       housingID,
+                                       setHousingID,
+                                       avgWeight,
+                                       setAvgWeight,
+                                       quanity,
+                                       setQuanity,
+                                       allBreeds,
+                                       allHousing
+                                   }}
                 />
 
                 <div className="relative m-5 w-2/4">
