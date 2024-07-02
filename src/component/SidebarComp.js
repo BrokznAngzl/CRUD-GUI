@@ -14,7 +14,7 @@ const SidebarComp = () => {
 
     const sideMenuObj = [
         {
-            title: t('side.menu.farm'),
+            title: t('side.menu.customer'),
             href: 'customer'
         },
         {
