@@ -48,8 +48,12 @@ const ImportPage = () => {
             setLoading(true)
             setTableData()
             const response = await client.get(ImportApi.IMPORT)
-            setTableData(await response.data)
+            const queryResult = await response.data
+            if (queryResult && queryResult.length > 0) {
+                setTableData(queryResult)
+            }
             setLoading(false)
+            console.log(queryResult)
         } catch (error) {
             setLoading(false)
             console.error(error);
@@ -58,22 +62,27 @@ const ImportPage = () => {
 
     const findImport = async () => {
         try {
-            setLoading(true)
-            setTableData()
-            const importation = {
-                "startDate": startDate,
-                "endDate": endDate,
-                "breedsID": breeds,
-                "housingID": housingID,
-                "avgWeight": avgWeight,
-                "quanity": quanity
+            if (!startDate && !endDate && !breeds && !housingID && !avgWeight &&!quanity) {
+                getAllImport()
             }
-            const response = await client.post(ImportApi.FIND, importation)
-            const queryResult = await response.data
-            if (queryResult && queryResult.length > 0) {
-                setTableData(queryResult)
+            else {
+                setLoading(true)
+                setTableData()
+                const importation = {
+                    "startDate": startDate,
+                    "endDate": endDate,
+                    "breedsID": breeds,
+                    "housingID": housingID,
+                    "avgWeight": avgWeight,
+                    "quanity": quanity
+                }
+                const response = await client.post(ImportApi.FIND, importation)
+                const queryResult = await response.data
+                if (queryResult && queryResult.length > 0) {
+                    setTableData(queryResult)
+                }
+                setLoading(false)
             }
-            setLoading(false)
         } catch (e) {
             console.log(e)
             setLoading(false)
