@@ -18,7 +18,7 @@ const AddFarmPage = () => {
     const [date, setDate] = useState(editData.date);
     const [avgWeight, setAvgWeight] = useState(editData.avgWeight);
     const [quanity, setQuanity] = useState(editData.quanity)
-    const [breeds, setBreeds] = useState();
+    const [breeds, setBreeds] = useState(editData.breedsID);
     const [housingID, setHousingID] = useState();
     const [allHousing, setAllHousing] = useState([]);
     const [allBreeds, setAllBreeds] = useState([]);
@@ -88,11 +88,12 @@ const AddFarmPage = () => {
     }
 
     const resetForm = () => {
-        setDate('')
-        setBreeds('')
-        setAvgWeight('')
-        setQuanity('')
-        setHousingID('')
+        findHousing(editData.housingName)
+        findBreeds(editData.breedsName)
+        setDate(editData.date)
+        setBreeds(editData.breedsID)
+        setAvgWeight(editData.avgWeight)
+        setQuanity(editData.quanity)
     }
 
     const buttons = [

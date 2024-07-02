@@ -59,7 +59,7 @@ const EditHousing = () => {
     const resetForm = () => {
         setHousingName(editData.housingName);
         setStallQuanity(editData.stallQuanity)
-        setFarm(editData.farmID)
+        findFarm(editData.farmName)
     }
 
     const buttons = [
