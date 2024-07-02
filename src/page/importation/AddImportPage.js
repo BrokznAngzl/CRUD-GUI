@@ -15,6 +15,7 @@ const AddFarmPage = () => {
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
+    const [importCode, setImportCode] = useState();
     const [date, setDate] = useState();
     const [avgWeight, setAvgWeight] = useState()
     const [quanity, setQuanity] = useState()
@@ -31,6 +32,7 @@ const AddFarmPage = () => {
                 "quanity": quanity,
                 "breeds": breeds,
                 "housingID": housingID,
+                "importCode": importCode
             }
 
             const response = await client.post(ImportApi.IMPORT, importation);
@@ -82,9 +84,17 @@ const AddFarmPage = () => {
 
     ]
 
+    const generateImportCode = () => {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const digits = '0123456789';
+        const getRandomChar = (chars) => chars[Math.floor(Math.random() * chars.length)];
+        setImportCode(`${getRandomChar(letters)}${getRandomChar(digits)}${getRandomChar(digits)}${getRandomChar(letters)}`);
+    };
+
     useEffect(() => {
         getAllBreeds()
         getAllHousing()
+        generateImportCode()
     }, []);
 
     useEffect(() => {
@@ -126,6 +136,7 @@ const AddFarmPage = () => {
                         housingID,
                         allHousing,
                         allBreeds,
+                        importCode
                     }}
                 />
 

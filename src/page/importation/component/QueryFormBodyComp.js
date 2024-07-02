@@ -5,14 +5,14 @@ const QueryFormBodyComp = (props) => {
     const {t} = useTranslation();
     const {
         startDate, setStartDate, endDate, setEndDate, setAvgWeight, avgWeight, setQuanity, quanity, setBreeds, breeds,
-        setHousingID, housingID, allHousing, allBreeds
+        setHousingID, housingID, allHousing, allBreeds, importCode, setImportCode
     } = props
 
     return (
         <div className="p-6 space-y-6 border-x">
             <form>
-                <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-1">
+                <div className="grid grid-cols-6 gap-6">
+                    <div className="col-span-3">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -25,7 +25,7 @@ const QueryFormBodyComp = (props) => {
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div className="col-span-3">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -38,7 +38,7 @@ const QueryFormBodyComp = (props) => {
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div className="col-span-3">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -64,7 +64,7 @@ const QueryFormBodyComp = (props) => {
                             }
                         </select>
                     </div>
-                    <div className="col-span-1">
+                    <div className="col-span-3">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -90,7 +90,7 @@ const QueryFormBodyComp = (props) => {
                             }
                         </select>
                     </div>
-                    <div className="col-span-1">
+                    <div className="col-span-2">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -105,9 +105,9 @@ const QueryFormBodyComp = (props) => {
                             required
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div className="col-span-2">
                         <label
-                            className="text-sm font-medium text-gray-900 block mb-2"
+                            className="text-start text-sm font-medium text-gray-900 block mb-2"
                         >
                             {t('form.label.import.quantity')}
                         </label>
@@ -115,8 +115,23 @@ const QueryFormBodyComp = (props) => {
                             value={quanity}
                             onChange={(e) => setQuanity(e.target.value)}
                             type="number"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                            className="text-start shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                             placeholder={t('form.placeholder.import.quantity')}
+                            required
+                        />
+                    </div>
+                    <div className="col-span-2">
+                        <label
+                            className="text-sm font-medium text-gray-900 block mb-2"
+                        >
+                            {t('form.label.import.code')}
+                        </label>
+                        <input
+                            value={importCode}
+                            onChange={(e)=>setImportCode(e.target.value)}
+                            type="text"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                            placeholder={t('form.placeholder.import.code')}
                             required
                         />
                     </div>

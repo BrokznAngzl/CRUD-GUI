@@ -12,10 +12,11 @@ const ImportPage = () => {
     const {t} = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = [t('table.id'), t('table.date'), t('table.breeds'),
+    const columnHeader = [t('table.id'), t('table.import.code'), t('table.date'), t('table.breeds'),
                                 t('table.housing'), t('table.weight'), t('quantity')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
+    const [importCode, setImportCode] = useState();
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
     const [avgWeight, setAvgWeight] = useState()
@@ -62,7 +63,7 @@ const ImportPage = () => {
 
     const findImport = async () => {
         try {
-            if (!startDate && !endDate && !breeds && !housingID && !avgWeight &&!quanity) {
+            if (!startDate && !endDate && !breeds && !housingID && !avgWeight &&!quanity && !importCode) {
                 getAllImport()
             }
             else {
@@ -74,7 +75,8 @@ const ImportPage = () => {
                     "breedsID": breeds,
                     "housingID": housingID,
                     "avgWeight": avgWeight,
-                    "quanity": quanity
+                    "quanity": quanity,
+                    "importCode": importCode
                 }
                 const response = await client.post(ImportApi.FIND, importation)
                 const queryResult = await response.data
@@ -100,8 +102,7 @@ const ImportPage = () => {
 
             if (response.status === 204) {
                 console.log('deleted successfully')
-                getAllHousing()
-
+                getAllImport()
             }
         } catch (e) {
             console.log(e)
@@ -115,6 +116,7 @@ const ImportPage = () => {
         setQuanity('')
         setBreeds('')
         setHousingID('')
+        setImportCode('')
     }
 
     const confirmDelete = (record) => {
@@ -133,7 +135,6 @@ const ImportPage = () => {
             name: t('button.reset.form'),
             colorStyle: 'bg-blue-600 hover:bg-blue-400',
         },
-
     ]
 
     useEffect(() => {
@@ -161,7 +162,9 @@ const ImportPage = () => {
                                    quanity,
                                    setQuanity,
                                    allBreeds,
-                                   allHousing
+                                   allHousing,
+                                   importCode,
+                                   setImportCode
                                }}
                 />
 

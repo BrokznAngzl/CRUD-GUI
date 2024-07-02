@@ -7,7 +7,7 @@ const QueryFormComp = (props) => {
     const {
         toggleForm, showForm, title, buttons,
         startDate, setStartDate, endDate, setEndDate, breeds, setBreeds, housingID, setHousingID, avgWeight,
-        setAvgWeight, quanity, setQuanity, allBreeds, allHousing
+        setAvgWeight, quanity, setQuanity, allBreeds, allHousing, importCode, setImportCode
     } = props
 
     return (
@@ -20,7 +20,7 @@ const QueryFormComp = (props) => {
                         startDate, setStartDate, endDate, setEndDate,
                         setAvgWeight, avgWeight, setQuanity, quanity,
                         setBreeds, breeds, setHousingID, housingID,
-                        allHousing, allBreeds,
+                        allHousing, allBreeds, importCode, setImportCode
                     }}
                 />
             )}

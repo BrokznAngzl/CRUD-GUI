@@ -77,6 +77,8 @@
   "form.placeholder.case.name": "เต้นจนตุย",
 
   "form.label.import.date": "วันที่",
+  "form.label.import.code": "รหัสการนำเข้า",
+  "form.placeholder.import.code": "A32B",
   "form.label.import.date.start": "วันเริ่ม",
   "form.label.import.date.end": "วันจบ",
   "form.label.import.breeds": "สายพันธ์",
@@ -89,6 +91,7 @@
   "form.placeholder.import.quantity": "20",
 
   "table.id": "ไอดี",
+  "table.import.code": "รหัสการนำเข้า",
   "table.date": "วันที่",
   "table.breeds": "สายพันธ์",
   "table.case": "สาเหตุ",

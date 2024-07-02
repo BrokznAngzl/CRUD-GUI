@@ -15,6 +15,7 @@ const AddFarmPage = () => {
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
+    const [importCode, setImportCode] = useState(editData.importCode);
     const [date, setDate] = useState(editData.date);
     const [avgWeight, setAvgWeight] = useState(editData.avgWeight);
     const [quanity, setQuanity] = useState(editData.quanity)
@@ -127,6 +128,7 @@ const AddFarmPage = () => {
         }
     }, [alertBox]);
 
+    console.log(editData)
     return (
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
@@ -155,6 +157,7 @@ const AddFarmPage = () => {
                         housingID,
                         allHousing,
                         allBreeds,
+                        importCode,
                     }}
                 />
 

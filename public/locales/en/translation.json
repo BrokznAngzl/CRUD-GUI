@@ -77,6 +77,8 @@
   "form.placeholder.case.name": "Dance till death",
 
   "form.label.import.date": "Date",
+  "form.label.import.code": "Import Code",
+  "form.placeholder.import.code": "A32B",
   "form.label.import.date.start": "Start Date",
   "form.label.import.date.end": "End Date",
   "form.label.import.breeds": "Breeds",
@@ -89,6 +91,7 @@
   "form.placeholder.import.quantity": "20",
 
   "table.id": "id",
+  "table.import.code": "import code",
   "table.date": "date",
   "table.breeds": "breeds",
   "table.case": "cause",

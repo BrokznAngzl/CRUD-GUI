@@ -5,14 +5,14 @@ const FormBodyComp = (props) => {
     const {t} = useTranslation();
     const {
         setDate, date, setAvgWeight, avgWeight, setQuanity, quanity, setBreeds, breeds,
-        setHousingID, housingID, allHousing, allBreeds
+        setHousingID, housingID, allHousing, allBreeds, importCode
     } = props
 
     return (
         <div className="p-6 space-y-6 border-x">
             <form>
                 <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-full">
+                    <div className="col-span-1">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -24,6 +24,19 @@ const FormBodyComp = (props) => {
                             type="date"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                             placeholder="30-06-2024"
+                            required
+                        />
+                    </div>
+                    <div className="col-span-1">
+                        <label
+                            className="text-sm font-medium text-gray-900 block mb-2"
+                        >
+                            {t('form.label.import.code')}
+                        </label>
+                        <input
+                            value={importCode}
+                            type="text"
+                            className="pointer-events-none opacity-70 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                             required
                         />
                     </div>
