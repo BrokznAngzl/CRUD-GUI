@@ -2,29 +2,33 @@ import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
 import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
-import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
+import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
+import CustomerApi from "../../apiurl/CustomerApi";
 
-const EditFarmPage = () => {
+const AddFarmPage = () => {
     const { t } = useTranslation();
-    const {setPage, client, editData} = useContext(AppContext);
+    const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
+    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [farmName, setFarmName] = useState(editData.farmName);
-    const [farmLocation, setFarmLocation] = useState(editData.location)
+    const [customerName, setCustomerName] = useState();
+    const [email, setEmail] = useState();
+    const [phone, setPhone] = useState();
 
-    const editFarm = async () => {
+    const createCustomer = async () => {
         try {
-            const farm = {
-                "farmID": editData.farmID,
-                "farmName": farmName,
-                "location": farmLocation
+            const customer = {
+                "customerName": customerName,
+                "email": email,
+                "phone": phone
             }
 
-            const response = await client.put(FarmApi.FARM, farm);
+            console.log(customer)
+
+            const response = await client.post(CustomerApi.CUSTOMER, customer);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -34,20 +38,21 @@ const EditFarmPage = () => {
     }
 
     const resetForm = () => {
-        setFarmName(editData.farmName);
-        setFarmLocation(editData.location)
+        setCustomerName('')
+        setEmail('')
+        setPhone('')
     }
 
     const buttons = [
         {
-            func: editFarm,
-            name: t('button.save.farm'),
+            func: createCustomer,
+            name: t('button.save.customer'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
             name: t('button.reset.form'),
-            colorStyle: 'bg-blue-600 hover:bg-blue-400',
+            colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
 
     ]
@@ -67,23 +72,24 @@ const EditFarmPage = () => {
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
-                    responseCode === 200 ? (
-                        <SaveDataSuccessComp title={t('global.farm')} />
+                    responseCode === 201 ? (
+                        <SaveDataSuccessComp title={t('global.customer')}/>
                     ) : (
-                        <SaveDataFailedComp title={t('global.farm')} />
+                        <SaveDataFailedComp title={t('global.customer')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.farm.edit')} prevPage={'farm'}/>
-                <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
-                              farmName={farmName} farmLocation={farmLocation}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.customer.add')} prevPage={'customer'}/>
+                <FormBodyComp setCustomerName={setCustomerName} setEmail={setEmail} setPhone={setPhone}
+                              customerName={customerName} email={email} phone={phone}/>
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>
 
     )
+
 }
 
-export default EditFarmPage
+export default AddFarmPage

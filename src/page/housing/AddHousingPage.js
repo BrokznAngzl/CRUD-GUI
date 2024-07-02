@@ -7,23 +7,28 @@ import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
 import FarmApi from "../../apiurl/FarmApi";
+import HousingApi from "../../apiurl/HousingApi";
 
 const AddFarmPage = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation()
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
+    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [farmName, setFarmName] = useState();
-    const [farmLocation, setFarmLocation] = useState()
+    const [housingName, setHousingName] = useState(null)
+    const [stallQuanity, setStallQuanity] = useState(null);
+    const [farm, setFarm] = useState();
+    const [allFarm, setAllFarm] = useState([])
 
-    const createFarm = async () => {
+    const createHousing = async () => {
         try {
-            const farm = {
-                "farmName": farmName,
-                "location": farmLocation
+            const housing = {
+                "housingName": housingName,
+                "stallQuanity": stallQuanity,
+                "farmID": farm,
             }
 
-            const response = await client.post(FarmApi.FARM, farm);
+            const response = await client.post(HousingApi.HOUSING, housing);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -32,15 +37,25 @@ const AddFarmPage = () => {
         }
     }
 
-    const resetForm =()=>{
-        setFarmName('')
-        setFarmLocation('')
+    const getAllFarm = async () => {
+        try {
+            const response = await client.get(FarmApi.FARM)
+            setAllFarm(await response.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const resetForm = () => {
+        setHousingName('')
+        setStallQuanity('')
+        setFarm(null)
     }
 
     const buttons = [
         {
-            func: createFarm,
-            name: t('button.save.farm'),
+            func: createHousing,
+            name: t('button.save.housing'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -50,6 +65,10 @@ const AddFarmPage = () => {
         },
 
     ]
+
+    useEffect(() => {
+        getAllFarm()
+    }, []);
 
     useEffect(() => {
         if (alertBox) {
@@ -67,17 +86,18 @@ const AddFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 201 ? (
-                        <SaveDataSuccessComp title={t('global.farm')} />
+                        <SaveDataSuccessComp title={t('global.housing')} />
                     ) : (
-                        <SaveDataFailedComp title={t('global.farm')} />
+                        <SaveDataFailedComp title={t('global.housing')} />
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.farm.add')} prevPage={'farm'}/>
-                <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
-                              farmName={farmName} farmLocation={farmLocation} />
+                <FormHeaderComp setPage={setPage} title={t('form.header.housing.add')} prevPage={'housing'}/>
+                <FormBodyComp setHousingName={setHousingName} housingName={housingName}
+                              setStallQuanity={setStallQuanity} stallQuanity={stallQuanity}
+                              setFarm={setFarm} farm={farm} allFarm={allFarm}/>
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>

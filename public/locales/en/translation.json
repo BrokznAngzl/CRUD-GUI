@@ -1,0 +1,123 @@
+{
+  "global.farm": "farm",
+  "global.customer": "customer",
+  "global.breeds": "breeds",
+  "global.housing": "housing",
+  "global.import": "import",
+  "global.export": "export",
+  "global.death":  "death",
+
+  "side.menu.table": "Table",
+  "side.menu.report": "Report",
+  "side.menu.farm": "Farm",
+  "side.menu.customer": "Customer",
+  "side.menu.breeds": "Breeds",
+  "side.menu.housing": "housing",
+  "side.menu.import": "Import",
+  "side.menu.export": "Export",
+  "side.menu.death": "Death",
+
+  "form.header.farm": "Farm",
+  "form.header.farm.add": "Add Farm",
+  "form.header.farm.edit": "Edit Farm",
+
+  "form.header.customer": "Customer",
+  "form.header.customer.add": "Add Customer",
+  "form.header.customer.edit": "Edit Customer",
+
+  "form.header.breeds": "Breeds",
+  "form.header.breeds.add": "Add Breeds",
+  "form.header.breeds.edit": "Edit Breeds",
+
+  "form.header.housing": "Housing",
+  "form.header.housing.add": "Add Housing",
+  "form.header.housing.edit": "Edit Housing",
+
+  "form.header.import": "Import",
+  "form.header.import.add": "Add Import",
+  "form.header.import.edit": "Edit Import",
+
+  "form.header.export": "Export",
+  "form.header.export.add": "Add Export",
+  "form.header.export.edit": "Edit Export",
+
+  "form.header.death": "Death",
+  "form.header.death.add": "Add Death",
+  "form.header.death.edit": "Edit Death",
+
+  "form.label.farm.name": "Farm Name",
+  "form.placeholder.farm.name": "Ichigo Farm",
+  "form.label.farm.location": "Farm Location",
+  "form.placeholder.farm.location": "Chak Gam Bor",
+
+  "form.label.customer.name": "Customer Name",
+  "form.placeholder.customer.name": "Forrest Gump",
+  "form.label.customer.email": "Email",
+  "form.placeholder.customer.email": "MatherFather@Email.com",
+  "form.label.customer.phone": "Phone",
+  "form.placeholder.customer.phone": "0912345678",
+
+  "form.label.housing.name": "Housing Name",
+  "form.placeholder.housing.name": "Kawaii House",
+  "form.label.housing.stall": "Stall Quantity",
+  "form.placeholder.housing.stall": "10",
+  "form.label.housing.farm": "Farm",
+  "form.placeholder.housing.farm": "Select Farm",
+
+  "form.label.breeds.name": "Breeds Name",
+  "form.placeholder.breeds.name": "Kurobuta",
+
+  "form.label.import.date": "Date",
+  "form.label.import.date.start": "Start Date",
+  "form.label.import.date.end": "End Date",
+  "form.label.import.breeds": "Breeds",
+  "form.placeholder.import.breeds": "Select Breeds",
+  "form.label.import.housing": "Housing",
+  "form.placeholder.import.housing": "Select Housing",
+  "form.label.import.weight": "Average Weight (KG)",
+  "form.placeholder.import.weight": "10",
+  "form.label.import.quantity": "Quantity",
+  "form.placeholder.import.quantity": "20",
+
+  "table.id": "id",
+  "table.date": "date",
+  "table.breeds": "breeds",
+  "table.housing": "housing",
+  "table.weight": "average weight",
+  "table.quantity": "quantity",
+  "table.email": "email",
+  "table.phone": "phone",
+  "table.name": "name",
+  "table.location": "location",
+  "table.farm": "farm",
+  "table.stall": "stall quantity",
+  "table.management": "management",
+
+  "button.edit": "Edit",
+  "button.add": "Add",
+  "button.delete": "Delete",
+  "button.reset.form": "Reset Form",
+
+  "button.find.farm": "Find Farm",
+  "button.find.customer": "Find Customer",
+  "button.find.breeds": "Find Breeds",
+  "button.find.housing": "Find Housing",
+  "button.find.import": "Find Import",
+  "button.find.export": "Find Export",
+  "button.find.death": "Find Death",
+
+  "button.save.farm": "Save Farm",
+  "button.save.customer": "Save Customer",
+  "button.save.breeds": "Save Breeds",
+  "button.save.housing": "Save Housing",
+  "button.save.import": "Save Import",
+  "button.save.export" :"Save Export",
+  "button.save.death" : "Save Death",
+
+  "status.loading": "Loading Data...",
+  "status.no.data": "No Data Found",
+
+  "alert.box.delete.request": "Do you want to delete",
+  "alert.box.delete.success": "deleted successfully"
+
+}

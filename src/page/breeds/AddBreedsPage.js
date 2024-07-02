@@ -2,29 +2,26 @@ import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
 import { useTranslation } from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
-import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
+import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
+import BreedsApi from "../../apiurl/BreedsApi";
 
-const EditFarmPage = () => {
+const AddBreedsPage = () => {
     const { t } = useTranslation();
-    const {setPage, client, editData} = useContext(AppContext);
+    const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [farmName, setFarmName] = useState(editData.farmName);
-    const [farmLocation, setFarmLocation] = useState(editData.location)
+    const [breedsName, setBreedsName] = useState();
 
-    const editFarm = async () => {
+    const createBreeds = async () => {
         try {
-            const farm = {
-                "farmID": editData.farmID,
-                "farmName": farmName,
-                "location": farmLocation
+            const breeds = {
+                "breedsName": breedsName
             }
 
-            const response = await client.put(FarmApi.FARM, farm);
+            const response = await client.post(BreedsApi.BREEDS, breeds);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -33,21 +30,20 @@ const EditFarmPage = () => {
         }
     }
 
-    const resetForm = () => {
-        setFarmName(editData.farmName);
-        setFarmLocation(editData.location)
+    const resetForm =()=>{
+        setBreedsName('')
     }
 
     const buttons = [
         {
-            func: editFarm,
-            name: t('button.save.farm'),
+            func: createBreeds,
+            name: t('button.save.breeds'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
             name: t('button.reset.form'),
-            colorStyle: 'bg-blue-600 hover:bg-blue-400',
+            colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
 
     ]
@@ -67,23 +63,23 @@ const EditFarmPage = () => {
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
-                    responseCode === 200 ? (
-                        <SaveDataSuccessComp title={t('global.farm')} />
+                    responseCode === 201 ? (
+                        <SaveDataSuccessComp title={t('global.breeds')} />
                     ) : (
-                        <SaveDataFailedComp title={t('global.farm')} />
+                        <SaveDataFailedComp title={t('global.breeds')} />
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.farm.edit')} prevPage={'farm'}/>
-                <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
-                              farmName={farmName} farmLocation={farmLocation}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.breeds.add')} prevPage={'breeds'}/>
+                <FormBodyComp setBreedsName={setBreedsName} breedsName={breedsName}/>
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>
 
     )
+
 }
 
-export default EditFarmPage
+export default AddBreedsPage

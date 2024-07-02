@@ -1,0 +1,123 @@
+{
+  "global.farm": "ฟาร์ม",
+  "global.customer": "ลูกค้า",
+  "global.breeds": "สายพันธ์",
+  "global.housing": "โรงเรือน",
+  "global.import": "การนำเข้า",
+  "global.export": "การส่งออก",
+  "global.death":  "บันทึกการตาย",
+
+  "side.menu.table": "ตาราง",
+  "side.menu.report": "รายงาน",
+  "side.menu.farm": "ฟาร์ม",
+  "side.menu.customer": "ลูกค้า",
+  "side.menu.breeds": "สายพันธ์",
+  "side.menu.housing": "โรงเรือน",
+  "side.menu.import": "การนำเข้า",
+  "side.menu.export": "การส่งออก",
+  "side.menu.death": "บันทึกการตาย",
+
+  "form.header.farm": "ฟาร์ม",
+  "form.header.farm.add": "เพิ่ม ฟาร์ม",
+  "form.header.farm.edit": "แก้ไข ฟาร์ม",
+
+  "form.header.customer": "ลูกค้า",
+  "form.header.customer.add": "เพิ่ม ลูกค้า",
+  "form.header.customer.edit": "แก้ไข ลูกค้า",
+
+  "form.header.breeds": "สายพันธ์",
+  "form.header.breeds.add": "เพิ่ม สายพันธ์",
+  "form.header.breeds.edit": "แก้ไข สายพันธ์",
+
+  "form.header.housing": "โรงเรือน",
+  "form.header.housing.add": "เพิ่ม โรงเรือน",
+  "form.header.housing.edit": "แก้ไข โรงเรือน",
+
+  "form.header.import": "การนำเข้า",
+  "form.header.import.add": "เพิ่ม การนำเข้า",
+  "form.header.import.edit": "แก้ไข การนำเข้า",
+
+  "form.header.export": "การส่งออก",
+  "form.header.export.add": "เพิ่ม การส่งออก",
+  "form.header.export.edit": "แก้ไข การส่งออก",
+
+  "form.header.death": "บันทึกการตาย",
+  "form.header.death.add": "เพิ่ม บันทึกการตาย",
+  "form.header.death.edit": "แก้ไข บันทึกการตาย",
+
+  "form.label.farm.name": "ชื่อฟาร์ม",
+  "form.placeholder.farm.name": "อิขิโกะฟาร์ม",
+  "form.label.farm.location": "ที่อยู่ฟาร์ม",
+  "form.placeholder.farm.location": "สักกำบอร์",
+
+  "form.label.customer.name": "ชื่อลูกค้า",
+  "form.placeholder.customer.name": "ฟอร์เรสท์ กัมป์",
+  "form.label.customer.email": "อีเมล",
+  "form.placeholder.customer.email": "MatherFather@Email.com",
+  "form.label.customer.phone": "เบอรโทรศัพท์",
+  "form.placeholder.customer.phone": "0912345678",
+
+  "form.label.housing.name": "ชื่อโรงเรือน",
+  "form.placeholder.housing.name": "คาวาอิเฮาส์",
+  "form.label.housing.stall": "จำนวนคอก",
+  "form.placeholder.housing.stall": "10",
+  "form.label.housing.farm": "ฟาร์ม",
+  "form.placeholder.housing.farm": "เลือกฟาร์ม",
+
+  "form.label.breeds.name": "ชื่อสายพันธ์",
+  "form.placeholder.breeds.name": "คุโรบุตะ",
+
+  "form.label.import.date": "วันที่",
+  "form.label.import.date.start": "วันเริ่ม",
+  "form.label.import.date.end": "วันจบ",
+  "form.label.import.breeds": "สายพันธ์",
+  "form.placeholder.import.breeds": "เลือกสายพันธ์",
+  "form.label.import.housing": "โรงเรือน",
+  "form.placeholder.import.housing": "เลือกโรงเรือน",
+  "form.label.import.weight": "น้ำหนักเฉลี่ย (KG)",
+  "form.placeholder.import.weight": "10",
+  "form.label.import.quantity": "จำนวน",
+  "form.placeholder.import.quantity": "20",
+
+  "table.id": "ไอดี",
+  "table.date": "วันที่",
+  "table.breeds": "สายพันธ์",
+  "table.housing": "โรงเรือน",
+  "table.weight": "น้ำหนักเฉลี่ย",
+  "table.quantity": "น้ำหนัก",
+  "table.email": "อีเมล",
+  "table.phone": "เบอร์โทรศัพท์",
+  "table.name": "ชื่อ",
+  "table.location": "ตำแหน่ง",
+  "table.farm": "ฟาร์ม",
+  "table.stall": "จำนวนคอก",
+  "table.management": "การจัดการ",
+
+  "button.edit": "แก้ไข",
+  "button.add": "เพิ่ม",
+  "button.delete": "ลบ",
+  "button.reset.form": "รีเซ็ทฟอร์ม",
+
+  "button.find.farm": "ค้นหาฟาร์ม",
+  "button.find.customer": "ค้นหาลุกค้า",
+  "button.find.breeds": "ค้นหาสายพันธ์",
+  "button.find.housing": "ค้นหาโรงเรือน",
+  "button.find.import": "ค้นหาการนำเข้า",
+  "button.find.export": "ค้นหาการส่งออก",
+  "button.find.death": "ค้นหาบันทึกการตาย",
+
+  "button.save.farm": "บันทึกฟาร์ม",
+  "button.save.customer": "บันทึกลูกค้า",
+  "button.save.breeds": "บันทึกสายพันธ์",
+  "button.save.housing": "บันทึกโรงเรือน",
+  "button.save.import": "บันทึกการนำเข้า",
+  "button.save.export" :"บันทึกการส่งออก",
+  "button.save.death" : "บันทึกการตาย",
+
+  "status.loading": "กำลังโหลดข้อมูล...",
+  "status.no.data": "ไม่พบข้อมูล",
+
+  "alert.box.delete.request": "ต้องการลบ",
+  "alert.box.delete.success": "ลบสำเร็จ"
+
+}

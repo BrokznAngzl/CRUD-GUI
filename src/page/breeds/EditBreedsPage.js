@@ -6,25 +6,24 @@ import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import FarmApi from "../../apiurl/FarmApi";
+import BreedsApi from "../../apiurl/BreedsApi";
 
-const EditFarmPage = () => {
+const EditBreedsPage = () => {
     const { t } = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
+    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [farmName, setFarmName] = useState(editData.farmName);
-    const [farmLocation, setFarmLocation] = useState(editData.location)
+    const [breedsName, setBreedsName] = useState(editData.breedsName);
 
-    const editFarm = async () => {
+    const editBreeds = async () => {
         try {
-            const farm = {
-                "farmID": editData.farmID,
-                "farmName": farmName,
-                "location": farmLocation
+            const breeds = {
+                "breedsID": editData.breedsID,
+                "breedsName": breedsName
             }
 
-            const response = await client.put(FarmApi.FARM, farm);
+            const response = await client.put(BreedsApi.BREEDS, breeds);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -34,14 +33,13 @@ const EditFarmPage = () => {
     }
 
     const resetForm = () => {
-        setFarmName(editData.farmName);
-        setFarmLocation(editData.location)
+        setBreedsName(editData.breedsName);
     }
 
     const buttons = [
         {
-            func: editFarm,
-            name: t('button.save.farm'),
+            func: editBreeds,
+            name: t('button.save.breeds'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -68,17 +66,16 @@ const EditFarmPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={t('global.farm')} />
+                        <SaveDataSuccessComp title={t('global.breeds')}/>
                     ) : (
-                        <SaveDataFailedComp title={t('global.farm')} />
+                        <SaveDataFailedComp title={t('global.breeds')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.farm.edit')} prevPage={'farm'}/>
-                <FormBodyComp setFarmName={setFarmName} setFarmLocation={setFarmLocation}
-                              farmName={farmName} farmLocation={farmLocation}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.breeds.edit')} prevPage={'breeds'}/>
+                <FormBodyComp breedsName={breedsName} setBreedsName={setBreedsName} />
                 <FormButtonComp buttons={buttons}/>
             </div>
         </div>
@@ -86,4 +83,4 @@ const EditFarmPage = () => {
     )
 }
 
-export default EditFarmPage
+export default EditBreedsPage
