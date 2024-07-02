@@ -2,6 +2,7 @@
   "global.farm": "ฟาร์ม",
   "global.customer": "ลูกค้า",
   "global.breeds": "สายพันธ์",
+  "global.case": "สาเหตุ",
   "global.housing": "โรงเรือน",
   "global.import": "การนำเข้า",
   "global.export": "การส่งออก",
@@ -12,6 +13,7 @@
   "side.menu.farm": "ฟาร์ม",
   "side.menu.customer": "ลูกค้า",
   "side.menu.breeds": "สายพันธ์",
+  "side.menu.case": "สาเหตุ",
   "side.menu.housing": "โรงเรือน",
   "side.menu.import": "การนำเข้า",
   "side.menu.export": "การส่งออก",
@@ -28,6 +30,10 @@
   "form.header.breeds": "สายพันธ์",
   "form.header.breeds.add": "เพิ่ม สายพันธ์",
   "form.header.breeds.edit": "แก้ไข สายพันธ์",
+
+  "form.header.case": "สาเหตุ",
+  "form.header.case.add": "เพิ่ม สาเหตุ",
+  "form.header.case.edit": "แก้ไข สาเหตุ",
 
   "form.header.housing": "โรงเรือน",
   "form.header.housing.add": "เพิ่ม โรงเรือน",
@@ -67,6 +73,9 @@
   "form.label.breeds.name": "ชื่อสายพันธ์",
   "form.placeholder.breeds.name": "คุโรบุตะ",
 
+  "form.label.case.name": "สาเหตุ",
+  "form.placeholder.case.name": "เต้นจนตุย",
+
   "form.label.import.date": "วันที่",
   "form.label.import.date.start": "วันเริ่ม",
   "form.label.import.date.end": "วันจบ",
@@ -82,6 +91,7 @@
   "table.id": "ไอดี",
   "table.date": "วันที่",
   "table.breeds": "สายพันธ์",
+  "table.case": "สาเหตุ",
   "table.housing": "โรงเรือน",
   "table.weight": "น้ำหนักเฉลี่ย",
   "table.quantity": "น้ำหนัก",
@@ -101,6 +111,7 @@
   "button.find.farm": "ค้นหาฟาร์ม",
   "button.find.customer": "ค้นหาลุกค้า",
   "button.find.breeds": "ค้นหาสายพันธ์",
+  "button.find.case": "ค้นหาสาเหตุ",
   "button.find.housing": "ค้นหาโรงเรือน",
   "button.find.import": "ค้นหาการนำเข้า",
   "button.find.export": "ค้นหาการส่งออก",
@@ -109,6 +120,7 @@
   "button.save.farm": "บันทึกฟาร์ม",
   "button.save.customer": "บันทึกลูกค้า",
   "button.save.breeds": "บันทึกสายพันธ์",
+  "button.save.case": "บันทึกสาเหตุ",
   "button.save.housing": "บันทึกโรงเรือน",
   "button.save.import": "บันทึกการนำเข้า",
   "button.save.export" :"บันทึกการส่งออก",
@@ -119,5 +131,4 @@
 
   "alert.box.delete.request": "ต้องการลบ",
   "alert.box.delete.success": "ลบสำเร็จ"
-
 }

@@ -2,6 +2,7 @@
   "global.farm": "farm",
   "global.customer": "customer",
   "global.breeds": "breeds",
+  "global.case": "case",
   "global.housing": "housing",
   "global.import": "import",
   "global.export": "export",
@@ -12,6 +13,7 @@
   "side.menu.farm": "Farm",
   "side.menu.customer": "Customer",
   "side.menu.breeds": "Breeds",
+  "side.menu.case": "Case",
   "side.menu.housing": "housing",
   "side.menu.import": "Import",
   "side.menu.export": "Export",
@@ -28,6 +30,10 @@
   "form.header.breeds": "Breeds",
   "form.header.breeds.add": "Add Breeds",
   "form.header.breeds.edit": "Edit Breeds",
+
+  "form.header.case": "Case",
+  "form.header.case.add": "Add Case",
+  "form.header.case.edit": "Edit Case",
 
   "form.header.housing": "Housing",
   "form.header.housing.add": "Add Housing",
@@ -67,6 +73,9 @@
   "form.label.breeds.name": "Breeds Name",
   "form.placeholder.breeds.name": "Kurobuta",
 
+  "form.label.case.name": "Cause",
+  "form.placeholder.case.name": "Dance till death",
+
   "form.label.import.date": "Date",
   "form.label.import.date.start": "Start Date",
   "form.label.import.date.end": "End Date",
@@ -82,6 +91,7 @@
   "table.id": "id",
   "table.date": "date",
   "table.breeds": "breeds",
+  "table.case": "cause",
   "table.housing": "housing",
   "table.weight": "average weight",
   "table.quantity": "quantity",
@@ -102,6 +112,7 @@
   "button.find.customer": "Find Customer",
   "button.find.breeds": "Find Breeds",
   "button.find.housing": "Find Housing",
+  "button.find.case": "Find Case",
   "button.find.import": "Find Import",
   "button.find.export": "Find Export",
   "button.find.death": "Find Death",
@@ -109,6 +120,7 @@
   "button.save.farm": "Save Farm",
   "button.save.customer": "Save Customer",
   "button.save.breeds": "Save Breeds",
+  "button.save.case": "Save Case",
   "button.save.housing": "Save Housing",
   "button.save.import": "Save Import",
   "button.save.export" :"Save Export",
@@ -119,5 +131,4 @@
 
   "alert.box.delete.request": "Do you want to delete",
   "alert.box.delete.success": "deleted successfully"
-
 }

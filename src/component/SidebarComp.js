@@ -33,6 +33,10 @@ const SidebarComp = () => {
             title: t('side.menu.farm'),
             href: 'farm'
         },
+        {
+            title: t('side.menu.case'),
+            href: 'case'
+        },
     ]
 
     const sideReportObj = [

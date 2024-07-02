@@ -15,6 +15,9 @@ import EditBreedsPage from "../page/breeds/EditBreedsPage";
 import ImportPage from "../page/importation/ImportPage";
 import AddImportPage from "../page/importation/AddImportPage";
 import EditImportPage from "../page/importation/EditImportPage";
+import CasePage from "../page/case/CasePage";
+import AddCasePage from "../page/case/AddCasePage";
+import EditCasePage from "../page/case/EditCasePage";
 
 export const AppContext = createContext();
 
@@ -40,6 +43,10 @@ export const SidebarProvider = ({children}) => {
         'breeds': <BreedsPage/>,
         'addbreeds': <AddBreedsPage/>,
         'editbreeds': <EditBreedsPage/>,
+
+        'case': <CasePage/>,
+        'addcase': <AddCasePage/>,
+        'editcase': <EditCasePage/>,
 
         'import': <ImportPage/>,
         'addimport': <AddImportPage/>,

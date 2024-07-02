@@ -1,28 +1,27 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
-import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
+import FormButtonComp from "../../component/form/FormButtonComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import BreedsApi from "../../apiurl/BreedsApi";
+import CaseApi from "../../apiurl/CaseApi";
 
-const EditBreedsPage = () => {
-    const { t } = useTranslation();
-    const {setPage, client, editData} = useContext(AppContext);
+const AddCasePage = () => {
+    const {t} = useTranslation();
+    const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [breedsName, setBreedsName] = useState(editData.breedsName);
+    const [cause, setCause] = useState();
 
-    const editBreeds = async () => {
+    const createCase = async () => {
         try {
-            const breeds = {
-                "breedsID": editData.breedsID,
-                "breedsName": breedsName
+            const caseDetail = {
+                cause: cause
             }
 
-            const response = await client.put(BreedsApi.BREEDS, breeds);
+            const response = await client.post(CaseApi.CASE, caseDetail);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -32,19 +31,19 @@ const EditBreedsPage = () => {
     }
 
     const resetForm = () => {
-        setBreedsName(editData.breedsName);
+        setCause('')
     }
 
     const buttons = [
         {
-            func: editBreeds,
-            name: t('button.save.breeds'),
+            func: createCase,
+            name: t('button.save.case'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
             func: resetForm,
             name: t('button.reset.form'),
-            colorStyle: 'bg-blue-600 hover:bg-blue-400',
+            colorStyle: 'bg-blue-600 hover:bg-blue-700',
         },
 
     ]
@@ -64,22 +63,23 @@ const EditBreedsPage = () => {
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
-                    responseCode === 200 ? (
-                        <SaveDataSuccessComp title={t('global.breeds')}/>
+                    responseCode === 201 ? (
+                        <SaveDataSuccessComp title={t('global.case')}/>
                     ) : (
-                        <SaveDataFailedComp title={t('global.breeds')}/>
+                        <SaveDataFailedComp title={t('global.case')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.breeds.edit')} prevPage={'breeds'}/>
-                <FormBodyComp breedsName={breedsName} setBreedsName={setBreedsName} />
-                <FormButtonComp buttons={buttons}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.case.add')} prevPage={'case'}/>
+                <FormBodyComp {...{cause, setCause}}/>
+                <FormButtonComp {...{buttons}}/>
             </div>
         </div>
 
     )
+
 }
 
-export default EditBreedsPage
+export default AddCasePage

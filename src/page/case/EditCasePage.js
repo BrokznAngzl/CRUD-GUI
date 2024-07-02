@@ -6,23 +6,23 @@ import FormButtonComp from "../../component/form/FormButtonComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
-import BreedsApi from "../../apiurl/BreedsApi";
+import CaseApi from "../../apiurl/CaseApi";
 
-const EditBreedsPage = () => {
+const EditCasePage = () => {
     const { t } = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
-    const [breedsName, setBreedsName] = useState(editData.breedsName);
+    const [cause, setCause] = useState(editData.cause);
 
-    const editBreeds = async () => {
+    const editCase = async () => {
         try {
-            const breeds = {
-                "breedsID": editData.breedsID,
-                "breedsName": breedsName
+            const caseDetail = {
+                causeID: editData.causeID,
+                cause: cause
             }
 
-            const response = await client.put(BreedsApi.BREEDS, breeds);
+            const response = await client.put(CaseApi.CASE, caseDetail);
             setResponseCode(response.status)
             setAlertBox(true)
 
@@ -32,13 +32,13 @@ const EditBreedsPage = () => {
     }
 
     const resetForm = () => {
-        setBreedsName(editData.breedsName);
+        setCause(editData.cause);
     }
 
     const buttons = [
         {
-            func: editBreeds,
-            name: t('button.save.breeds'),
+            func: editCase,
+            name: t('button.save.case'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -65,21 +65,21 @@ const EditBreedsPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={t('global.breeds')}/>
+                        <SaveDataSuccessComp title={t('global.case')}/>
                     ) : (
-                        <SaveDataFailedComp title={t('global.breeds')}/>
+                        <SaveDataFailedComp title={t('global.case')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.breeds.edit')} prevPage={'breeds'}/>
-                <FormBodyComp breedsName={breedsName} setBreedsName={setBreedsName} />
-                <FormButtonComp buttons={buttons}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.case.edit')} prevPage={'case'}/>
+                <FormBodyComp {...{cause, setCause}} />
+                <FormButtonComp {...{buttons}}/>
             </div>
         </div>
 
     )
 }
 
-export default EditBreedsPage
+export default EditCasePage
