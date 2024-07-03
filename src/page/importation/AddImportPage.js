@@ -38,7 +38,7 @@ const AddFarmPage = () => {
             const response = await client.post(ImportApi.IMPORT, importation);
             setResponseCode(response.status)
             setAlertBox(true)
-
+            generateImportCode()
         } catch (error) {
             setAlertBox(true)
         }
