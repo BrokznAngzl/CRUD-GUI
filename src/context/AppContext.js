@@ -20,6 +20,7 @@ import AddCasePage from "../page/case/AddCasePage";
 import EditCasePage from "../page/case/EditCasePage";
 import DeathPage from "../page/death/DeathPage";
 import AddDeathPage from "../page/death/AddDeathPage";
+import EditDeathPage from "../page/death/EditDeathPage";
 
 export const AppContext = createContext();
 
@@ -56,7 +57,7 @@ export const SidebarProvider = ({children}) => {
 
         'death': <DeathPage/>,
         'adddeath': <AddDeathPage/>,
-        'editdeath': <EditImportPage/>
+        'editdeath': <EditDeathPage/>
     };
 
     const client = axios.create({

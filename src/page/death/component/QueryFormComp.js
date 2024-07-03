@@ -6,8 +6,8 @@ import QueryFormBodyComp from "./QueryFormBodyComp";
 const QueryFormComp = (props) => {
     const {
         toggleForm, showForm, title, buttons,
-        startDate, setStartDate, endDate, setEndDate, breeds, setBreeds, housingID, setHousingID, avgWeight,
-        setAvgWeight, quanity, setQuanity, allBreeds, allHousing, importCode, setImportCode
+        startDate, setStartDate, endDate, setEndDate, importID, setImportID,
+        cause, setCause, quanity, setQuanity, allCase, allImport
     } = props
 
     return (
@@ -17,10 +17,8 @@ const QueryFormComp = (props) => {
             {showForm && (
                 <QueryFormBodyComp
                     {...{
-                        startDate, setStartDate, endDate, setEndDate,
-                        setAvgWeight, avgWeight, setQuanity, quanity,
-                        setBreeds, breeds, setHousingID, housingID,
-                        allHousing, allBreeds, importCode, setImportCode
+                        startDate, setStartDate, endDate, setEndDate, importID, setImportID,
+                        cause, setCause, quanity, setQuanity, allCase, allImport
                     }}
                 />
             )}

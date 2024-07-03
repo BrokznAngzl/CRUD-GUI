@@ -1,11 +1,11 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 const QueryFormBodyComp = (props) => {
     const {t} = useTranslation();
     const {
-        startDate, setStartDate, endDate, setEndDate, setAvgWeight, avgWeight, setQuanity, quanity, setBreeds, breeds,
-        setHousingID, housingID, allHousing, allBreeds, importCode, setImportCode
+        startDate, setStartDate, endDate, setEndDate, importID, setImportID,
+        cause, setCause, quanity, setQuanity, allCase, allImport
     } = props
 
     return (
@@ -42,22 +42,22 @@ const QueryFormBodyComp = (props) => {
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            {t('form.label.import.breeds')}
+                            {t('form.label.death.case')}
                         </label>
-                        <select value={breeds} onChange={(e) => setBreeds(e.target.value)
+                        <select value={cause} onChange={(e) => setCause(e.target.value)
                         }
                                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
-                            <option key={0} value='' selected={breeds === null}>
-                                {t('form.placeholder.import.breeds')}
+                            <option key={0} value='' selected={cause === null}>
+                                {t('form.placeholder.death.case')}
                             </option>
 
                             {
-                                (allBreeds && allBreeds.length > 0) && (allBreeds.map((breeds, index) => {
+                                (allCase && allCase.length > 0) && (allCase.map((cuase, index) => {
                                     return (
-                                        <option key={index + 1} value={breeds.breedsID}>
-                                            {breeds.breedsName}
+                                        <option key={index + 1} value={cuase.causeID}>
+                                            {cuase.cause}
                                         </option>
                                     )
                                 }))
@@ -79,26 +79,27 @@ const QueryFormBodyComp = (props) => {
                             required
                         />
                     </div>
+
                     <div className="col-span-2">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            {t('form.label.import.housing')}
+                            {t('form.label.death.import')}
                         </label>
-                        <select value={housingID} onChange={(e) => setHousingID(e.target.value)
+                        <select value={importID} onChange={(e) => setImportID(e.target.value)
                         }
                                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
-                            <option key={0} value='' selected={breeds === null}>
-                                {t('form.placeholder.import.housing')}
+                            <option key={0} value='' selected={importID === null}>
+                                {t('form.placeholder.death.import')}
                             </option>
 
                             {
-                                (allHousing && allHousing.length > 0) && (allHousing.map((housing, index) => {
+                                (allImport && allImport.length > 0) && (allImport.map((importation, index) => {
                                     return (
-                                        <option key={index + 1} value={housing.housingID}>
-                                            {housing.housingName}
+                                        <option key={index + 1} value={importation.importID}>
+                                            {importation.importCode}
                                         </option>
                                     )
                                 }))

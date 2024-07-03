@@ -20,10 +20,10 @@ const DeathPage = () => {
     const [importCode, setImportCode] = useState();
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
-    const [avgWeight, setAvgWeight] = useState()
+    const [importID, setImportID] = useState();
+    const [date, setDate] = useState();
+    const [cause, setCause] = useState();
     const [quanity, setQuanity] = useState()
-    const [breeds, setBreeds] = useState();
-    const [housingID, setHousingID] = useState();
     const [allCase, setAllCase] = useState([])
     const [allImport, setAllImport] = useState([]);
 
@@ -64,22 +64,21 @@ const DeathPage = () => {
 
     const findDeath = async () => {
         try {
-            if (!startDate && !endDate && !breeds && !housingID && !avgWeight &&!quanity && !importCode) {
+            if (!startDate && !endDate && !quanity && !cause && !importID) {
                 getAllDeath()
             }
             else {
                 setLoading(true)
                 setTableData()
-                const importation = {
+                const death = {
                     "startDate": startDate,
                     "endDate": endDate,
-                    "breedsID": breeds,
-                    "housingID": housingID,
-                    "avgWeight": avgWeight,
-                    "quanity": quanity,
-                    "importCode": importCode
+                    "quantity": quanity,
+                    "cause": cause,
+                    "importCode": importID
                 }
-                const response = await client.post(ImportApi.FIND, importation)
+                console.log(death)
+                const response = await client.post(DeathApi.FIND, death)
                 const queryResult = await response.data
                 if (queryResult && queryResult.length > 0) {
                     setTableData(queryResult)
@@ -113,11 +112,9 @@ const DeathPage = () => {
     const resetForm = () => {
         setStartDate('')
         setEndDate('')
-        setAvgWeight('')
         setQuanity('')
-        setBreeds('')
-        setHousingID('')
-        setImportCode('')
+        setCause(null)
+        setImportID(null)
     }
 
     const confirmDelete = (record) => {
@@ -154,18 +151,10 @@ const DeathPage = () => {
                                    setStartDate,
                                    endDate,
                                    setEndDate,
-                                   breeds,
-                                   setBreeds,
-                                   housingID,
-                                   setHousingID,
-                                   avgWeight,
-                                   setAvgWeight,
-                                   quanity,
-                                   setQuanity,
-                                   allCase,
-                                   allImport,
-                                   importCode,
-                                   setImportCode
+                                   importID, setImportID,
+                                   cause, setCause,
+                                   quanity, setQuanity,
+                                   allCase, allImport
                                }}
                 />
 

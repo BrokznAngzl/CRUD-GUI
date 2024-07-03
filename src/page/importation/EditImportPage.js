@@ -54,6 +54,7 @@ const AddImportPage = () => {
         try {
             const importation = {
                 "importID": editData.importID,
+                "importCode": importCode,
                 "date": date,
                 "avgWeight": avgWeight,
                 "quanity": quanity,
