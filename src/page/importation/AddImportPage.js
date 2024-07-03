@@ -10,7 +10,7 @@ import HousingApi from "../../apiurl/HousingApi";
 import ImportApi from "../../apiurl/ImportApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 
-const AddFarmPage = () => {
+const AddImportPage = () => {
     const {t} = useTranslation();
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
@@ -148,4 +148,4 @@ const AddFarmPage = () => {
 
 }
 
-export default AddFarmPage
+export default AddImportPage

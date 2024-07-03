@@ -30,6 +30,10 @@ const SidebarComp = () => {
             href: 'import'
         },
         {
+            title: t('side.menu.death'),
+            href: 'death'
+        },
+        {
             title: t('side.menu.farm'),
             href: 'farm'
         },

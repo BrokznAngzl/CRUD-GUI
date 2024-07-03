@@ -90,6 +90,11 @@
   "form.label.import.quantity": "จำนวน",
   "form.placeholder.import.quantity": "20",
 
+  "form.label.death.import": "การนำเข้า",
+  "form.placeholder.death.import": "เลือกการนำเข้า",
+  "form.label.death.case": "สาเหตุ",
+  "form.placeholder.death.case": "เลือกสาเหตุ",
+
   "table.id": "ไอดี",
   "table.import.code": "รหัสการนำเข้า",
   "table.date": "วันที่",

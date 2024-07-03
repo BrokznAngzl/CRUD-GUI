@@ -90,6 +90,11 @@
   "form.label.import.quantity": "Quantity",
   "form.placeholder.import.quantity": "20",
 
+  "form.label.death.import": "Import",
+  "form.placeholder.death.import": "Select Import",
+  "form.label.death.case": "Case",
+  "form.placeholder.death.case": "Select Case",
+
   "table.id": "id",
   "table.import.code": "import code",
   "table.date": "date",
