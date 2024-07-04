@@ -45,12 +45,12 @@ const SidebarComp = () => {
 
     const sideReportObj = [
         {
-            title: 'TEST Report',
-            href: 'abcreport'
+            title: 'Average Dairy Gain Report',
+            href: 'adgrpt'
         },
         {
-            title: 'DFG Report',
-            href: 'dfgreport'
+            title: 'Death Rate Report',
+            href: 'deathraterpt'
         },
     ]
 
