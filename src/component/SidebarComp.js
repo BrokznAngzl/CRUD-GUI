@@ -4,7 +4,7 @@ import {AppContext} from '../context/AppContext';
 import { useTranslation } from 'react-i18next';
 import SideMenuComp from "./SideMenuComp";
 import {TbFileReport, TbTable} from "react-icons/tb";
-import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
+import {AiFillCaretDown, AiFillCaretUp, AiFillCaretLeft} from "react-icons/ai";
 
 const SidebarComp = () => {
     const {t} = useTranslation();
@@ -74,7 +74,7 @@ const SidebarComp = () => {
                             </div>
                             <div className={"flex justify-content items-center px-4 py-2"}>
                                 {
-                                    tableMenu ? <AiFillCaretUp/> : <AiFillCaretDown/>
+                                    tableMenu ? <AiFillCaretDown/> : <AiFillCaretLeft/>
                                 }
                             </div>
                         </div>
@@ -96,7 +96,7 @@ const SidebarComp = () => {
                             </div>
                             <div className={"flex justify-content items-center px-4 py-2"}>
                                 {
-                                    reportMenu ? <AiFillCaretUp/> : <AiFillCaretDown/>
+                                    reportMenu ? <AiFillCaretDown/> : <AiFillCaretLeft/>
                                 }
                             </div>
                         </div>
