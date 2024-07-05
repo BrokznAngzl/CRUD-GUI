@@ -18,8 +18,8 @@
   "side.menu.import": "การนำเข้า",
   "side.menu.export": "การส่งออก",
   "side.menu.death": "บันทึกการตาย",
-  "side.menu.report.death": "รายงานอัตราการตาย",
-  "side.menu.report.adg": "รายงานอัตราการเติบโต",
+  "side.menu.report.death": "อัตราการตาย",
+  "side.menu.report.adg": "อัตราการเติบโต",
 
   "form.header.farm": "ฟาร์ม",
   "form.header.farm.add": "เพิ่ม ฟาร์ม",
@@ -54,8 +54,8 @@
   "form.header.death.edit": "แก้ไข บันทึกการตาย",
 
   "form.header.report.pdf": "รับ PDF",
-  "form.header.report.death": "รายงานอัตราการตาย",
-  "form.header.report.adg": "รายงานอัตราการเติบโต",
+  "form.header.report.death": "อัตราการตาย",
+  "form.header.report.adg": "อัตราการเติบโต",
 
   "form.label.farm.name": "ชื่อฟาร์ม",
   "form.placeholder.farm.name": "อิขิโกะฟาร์ม",

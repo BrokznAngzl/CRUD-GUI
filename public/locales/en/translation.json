@@ -18,8 +18,8 @@
   "side.menu.import": "Import",
   "side.menu.export": "Export",
   "side.menu.death": "Death",
-  "side.menu.report.death": "Death Rate Report",
-  "side.menu.report.adg": "Average Dairy Gain Report",
+  "side.menu.report.death": "Death Rate",
+  "side.menu.report.adg": "Average Dairy Gain",
 
   "form.header.farm": "Farm",
   "form.header.farm.add": "Add Farm",
@@ -54,8 +54,8 @@
   "form.header.death.edit": "Edit Death",
 
   "form.header.report.pdf": "Get PDF",
-  "form.header.report.death": "Death Rate Report",
-  "form.header.report.adg": "Average Daily Gain Report",
+  "form.header.report.death": "Death Rate",
+  "form.header.report.adg": "Average Daily Gain",
 
   "form.label.farm.name": "Farm Name",
   "form.placeholder.farm.name": "Ichigo Farm",
