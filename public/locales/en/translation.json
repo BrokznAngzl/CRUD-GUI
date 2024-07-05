@@ -54,8 +54,8 @@
   "form.header.death.edit": "Edit Death",
 
   "form.header.report.pdf": "Get PDF",
-  "form.header.report.death": "Death Report",
-  "form.header.report.adg": "Death Report",
+  "form.header.report.death": "Death Rate Report",
+  "form.header.report.adg": "Average Daily Gain Report",
 
   "form.label.farm.name": "Farm Name",
   "form.placeholder.farm.name": "Ichigo Farm",

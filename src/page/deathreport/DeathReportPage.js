@@ -5,15 +5,14 @@ import {useTranslation} from 'react-i18next';
 import DataStatusMessage from "../../component/DataStatusMessage";
 import ImportApi from "../../apiurl/ImportApi";
 import DeathApi from "../../apiurl/DeathApi";
-import CaseApi from "../../apiurl/CaseApi";
-// import QueryFormComp from "./component/QueryFormComp";
 import DeathRptApi from "../../apiurl/DeathRptApi";
 import QueryFormComp from "./component/QueryFormComp";
+import PDFGenerator from "../../generatepdf/PDFGenerator";
 
-const DeathPage = () => {
+const DeathReportPage = () => {
     const {t} = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
-    const {setPage, client} = useContext(AppContext);
+    const {client} = useContext(AppContext);
     const columnHeader = [t('table.import.code'), t('table.date'), t('table.quantity'), t('table.death'),  t('table.percentage')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
@@ -41,7 +40,6 @@ const DeathPage = () => {
                 setTableData(queryResult)
             }
             setLoading(false)
-            console.log(queryResult)
         } catch (error) {
             setLoading(false)
             console.error(error);
@@ -60,7 +58,6 @@ const DeathPage = () => {
                     "endDate": endDate,
                     "importCode": importID
                 }
-                console.log(death)
                 const response = await client.post(DeathRptApi.FIND, death)
                 const queryResult = await response.data
                 if (queryResult && queryResult.length > 0) {
@@ -140,7 +137,8 @@ const DeathPage = () => {
                 <div className="relative m-5 w-2/4">
                     <div className="flex items-center  justify-end px-1 py-3">
                         <button
-                            onClick={(e) => setPage('adddeath')}
+                            onClick={(e) =>
+                                PDFGenerator.exportPDF(columnHeader, tableData, t('form.header.report.death'), 'DeathRateReport.pdf')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                             {t('form.header.report.pdf')}
                         </button>
@@ -160,4 +158,4 @@ const DeathPage = () => {
     )
 }
 
-export default DeathPage
+export default DeathReportPage

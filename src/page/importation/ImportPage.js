@@ -54,7 +54,6 @@ const ImportPage = () => {
                 setTableData(queryResult)
             }
             setLoading(false)
-            console.log(queryResult)
         } catch (error) {
             setLoading(false)
             console.error(error);
