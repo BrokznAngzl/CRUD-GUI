@@ -1,13 +1,13 @@
 import React, {useContext, useState} from "react";
 import {AppContext} from "../context/AppContext";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import {AiFillCaretLeft, AiFillCaretRight} from "react-icons/ai";
 import PaginationButtonComp from "./PaginationButtonComp";
 
 const TableComp = (props) => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const {setPage, setEditData} = useContext(AppContext);
-    const {tableData, columnHeader, deleteRecord, editePage} = props
+    const {tableData, columnHeader, deleteRecord, editePage, management} = props
 
     const [pageNumber, setPageNumber] = useState(0); // Current page number
     const recordPerPage = 10;
@@ -42,30 +42,39 @@ const TableComp = (props) => {
                         })
                     }
 
-                    <th scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {t('table.management')}
-                    </th>
+                    {
+                        management && (
+                            <th scope="col"
+                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {t('table.management')}
+                            </th>
+                        )
+                    }
+
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {
                     displayData.map((record) => (
                         <tr key={record.id}>
-                        {
+                            {
                                 Object.entries(record).map(([key, value]) => (
                                     <td key={key} className="px-6 py-4 whitespace-nowrap">{value}</td>
                                 ))
                             }
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
-                                <a onClick={(e) => {
-                                    setPage(editePage)
-                                    setEditData(record)
-                                }}
-                                   className="text-indigo-600 hover:text-indigo-900 cursor-pointer">{t('button.edit')}</a>
-                                <a onClick={(e) => deleteRecord(record)}
-                                   className="ml-2 text-red-600 hover:text-red-900 cursor-pointer">{t('button.delete')}</a>
-                            </td>
+                            {
+                                management && (
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
+                                        <a onClick={(e) => {
+                                            setPage(editePage)
+                                            setEditData(record)
+                                        }}
+                                           className="text-indigo-600 hover:text-indigo-900 cursor-pointer">{t('button.edit')}</a>
+                                        <a onClick={(e) => deleteRecord(record)}
+                                           className="ml-2 text-red-600 hover:text-red-900 cursor-pointer">{t('button.delete')}</a>
+                                    </td>
+                                )
+                            }
                         </tr>
                     ))
                 }

@@ -18,6 +18,8 @@
   "side.menu.import": "การนำเข้า",
   "side.menu.export": "การส่งออก",
   "side.menu.death": "บันทึกการตาย",
+  "side.menu.report.death": "รายงานอัตราการตาย",
+  "side.menu.report.adg": "รายงานอัตราการเติบโต",
 
   "form.header.farm": "ฟาร์ม",
   "form.header.farm.add": "เพิ่ม ฟาร์ม",
@@ -50,6 +52,10 @@
   "form.header.death": "บันทึกการตาย",
   "form.header.death.add": "เพิ่ม บันทึกการตาย",
   "form.header.death.edit": "แก้ไข บันทึกการตาย",
+
+  "form.header.report.pdf": "รับ PDF",
+  "form.header.report.death": "รายงานอัตราการตาย",
+  "form.header.report.adg": "รายงานอัตราการเติบโต",
 
   "form.label.farm.name": "ชื่อฟาร์ม",
   "form.placeholder.farm.name": "อิขิโกะฟาร์ม",
@@ -98,6 +104,8 @@
   "table.id": "ไอดี",
   "table.import.code": "รหัสการนำเข้า",
   "table.date": "วันที่",
+  "table.death": "ตาย",
+  "table.percentage": "เปอร์เซ็น",
   "table.breeds": "สายพันธ์",
   "table.case": "สาเหตุ",
   "table.housing": "โรงเรือน",
@@ -124,6 +132,7 @@
   "button.find.import": "ค้นหาการนำเข้า",
   "button.find.export": "ค้นหาการส่งออก",
   "button.find.death": "ค้นหาบันทึกการตาย",
+  "button.find.report": "ค้นหารายงาน",
 
   "button.save.farm": "บันทึกฟาร์ม",
   "button.save.customer": "บันทึกลูกค้า",

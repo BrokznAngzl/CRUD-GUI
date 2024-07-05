@@ -182,7 +182,7 @@ const ImportPage = () => {
             {loading ? (
                 <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
-                <TableComp tableData={tableData} columnHeader={columnHeader}
+                <TableComp {...{tableData, columnHeader}} management={true}
                            editePage={'editimport'} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>

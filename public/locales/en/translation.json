@@ -18,6 +18,8 @@
   "side.menu.import": "Import",
   "side.menu.export": "Export",
   "side.menu.death": "Death",
+  "side.menu.report.death": "Death Rate Report",
+  "side.menu.report.adg": "Average Dairy Gain Report",
 
   "form.header.farm": "Farm",
   "form.header.farm.add": "Add Farm",
@@ -50,6 +52,10 @@
   "form.header.death": "Death",
   "form.header.death.add": "Add Death",
   "form.header.death.edit": "Edit Death",
+
+  "form.header.report.pdf": "Get PDF",
+  "form.header.report.death": "Death Report",
+  "form.header.report.adg": "Death Report",
 
   "form.label.farm.name": "Farm Name",
   "form.placeholder.farm.name": "Ichigo Farm",
@@ -98,6 +104,8 @@
   "table.id": "id",
   "table.import.code": "import code",
   "table.date": "date",
+  "table.death": "death",
+  "table.percentage": "percentage",
   "table.breeds": "breeds",
   "table.case": "cause",
   "table.housing": "housing",
@@ -124,6 +132,7 @@
   "button.find.import": "Find Import",
   "button.find.export": "Find Export",
   "button.find.death": "Find Death",
+  "button.find.report": "Find Report",
 
   "button.save.farm": "Save Farm",
   "button.save.customer": "Save Customer",

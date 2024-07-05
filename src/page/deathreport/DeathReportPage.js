@@ -6,31 +6,21 @@ import DataStatusMessage from "../../component/DataStatusMessage";
 import ImportApi from "../../apiurl/ImportApi";
 import DeathApi from "../../apiurl/DeathApi";
 import CaseApi from "../../apiurl/CaseApi";
+// import QueryFormComp from "./component/QueryFormComp";
+import DeathRptApi from "../../apiurl/DeathRptApi";
 import QueryFormComp from "./component/QueryFormComp";
 
 const DeathPage = () => {
     const {t} = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = [t('table.id'), t('table.date'), t('table.case'), t('table.quantity'), t('table.import.code')]
+    const columnHeader = [t('table.import.code'), t('table.date'), t('table.quantity'), t('table.death'),  t('table.percentage')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
     const [importID, setImportID] = useState();
-    const [cause, setCause] = useState();
-    const [quanity, setQuanity] = useState()
-    const [allCase, setAllCase] = useState([])
     const [allImport, setAllImport] = useState([]);
-
-    const getAllCase = async () => {
-        try {
-            const response = await client.get(CaseApi.CASE)
-            setAllCase(await response.data)
-        } catch (e) {
-            console.log(e)
-        }
-    }
 
     const getAllImport = async () => {
         try {
@@ -41,11 +31,11 @@ const DeathPage = () => {
         }
     }
 
-    const getAllDeath = async () => {
+    const getAllDeathReport = async () => {
         try {
             setLoading(true)
             setTableData()
-            const response = await client.get(DeathApi.DEATH)
+            const response = await client.get(DeathRptApi.REPORT)
             const queryResult = await response.data
             if (queryResult && queryResult.length > 0) {
                 setTableData(queryResult)
@@ -58,22 +48,20 @@ const DeathPage = () => {
         }
     }
 
-    const findDeath = async () => {
+    const findDeathRpt = async () => {
         try {
-            if (!startDate && !endDate && !quanity && !cause && !importID) {
-                getAllDeath()
+            if (!startDate && !endDate && !importID) {
+                getAllDeathReport()
             } else {
                 setLoading(true)
                 setTableData()
                 const death = {
                     "startDate": startDate,
                     "endDate": endDate,
-                    "quantity": quanity,
-                    "cause": cause,
                     "importCode": importID
                 }
                 console.log(death)
-                const response = await client.post(DeathApi.FIND, death)
+                const response = await client.post(DeathRptApi.FIND, death)
                 const queryResult = await response.data
                 if (queryResult && queryResult.length > 0) {
                     setTableData(queryResult)
@@ -97,7 +85,7 @@ const DeathPage = () => {
 
             if (response.status === 204) {
                 console.log('deleted successfully')
-                getAllDeath()
+                getAllDeathReport()
             }
         } catch (e) {
             console.log(e)
@@ -107,8 +95,6 @@ const DeathPage = () => {
     const resetForm = () => {
         setStartDate('')
         setEndDate('')
-        setQuanity('')
-        setCause(null)
         setImportID(null)
     }
 
@@ -119,8 +105,8 @@ const DeathPage = () => {
 
     const buttons = [
         {
-            func: findDeath,
-            name: t('button.find.death'),
+            func: findDeathRpt,
+            name: t('button.find.report'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -131,16 +117,15 @@ const DeathPage = () => {
     ]
 
     useEffect(() => {
-        getAllDeath()
+        getAllDeathReport()
         getAllImport()
-        getAllCase()
     }, []);
 
     return (
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.death')}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.report.death')}
                                buttons={buttons}
                                {...{
                                    startDate,
@@ -148,9 +133,7 @@ const DeathPage = () => {
                                    endDate,
                                    setEndDate,
                                    importID, setImportID,
-                                   cause, setCause,
-                                   quanity, setQuanity,
-                                   allCase, allImport
+                                   allImport
                                }}
                 />
 
@@ -159,7 +142,7 @@ const DeathPage = () => {
                         <button
                             onClick={(e) => setPage('adddeath')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            {t('form.header.death.add')}
+                            {t('form.header.report.pdf')}
                         </button>
                     </div>
                 </div>
@@ -168,8 +151,7 @@ const DeathPage = () => {
             {loading ? (
                 <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
-                <TableComp {...{tableData, columnHeader}} management={true}
-                           editePage={'editdeath'} deleteRecord={confirmDelete}/>
+                <TableComp editePage={'editdeath'} deleteRecord={confirmDelete} management={false} {...{tableData, columnHeader}}/>
             ) : (
                 <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>
             )}
