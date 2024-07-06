@@ -101,8 +101,13 @@
   "form.label.death.case": "Case",
   "form.placeholder.death.case": "Select Case",
 
+  "form.label.export.code": "Export Code",
+  "form.label.export.customer": "Customer",
+  "form.placeholder.export.customer": "Select Customer",
+
   "table.id": "id",
   "table.import.code": "import code",
+  "table.export.code": "export code",
   "table.date": "date",
   "table.death": "death",
   "table.percentage": "percentage",
@@ -116,6 +121,7 @@
   "table.name": "name",
   "table.location": "location",
   "table.farm": "farm",
+  "table.customer": "customer",
   "table.stall": "stall quantity",
   "table.management": "management",
 

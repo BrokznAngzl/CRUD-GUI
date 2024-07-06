@@ -101,8 +101,13 @@
   "form.label.death.case": "สาเหตุ",
   "form.placeholder.death.case": "เลือกสาเหตุ",
 
+  "form.label.export.code": "รหัสการส่งออก",
+  "form.label.export.customer": "ลูกค้า",
+  "form.placeholder.export.customer": "เลือกลูกค้า",
+
   "table.id": "ไอดี",
   "table.import.code": "รหัสการนำเข้า",
+  "table.export.code": "รหัสการส่งออก",
   "table.date": "วันที่",
   "table.death": "ตาย",
   "table.percentage": "เปอร์เซ็น",
@@ -116,6 +121,7 @@
   "table.name": "ชื่อ",
   "table.location": "ตำแหน่ง",
   "table.farm": "ฟาร์ม",
+  "table.customer": "ลูกค้า",
   "table.stall": "จำนวนคอก",
   "table.management": "การจัดการ",
 

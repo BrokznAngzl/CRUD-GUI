@@ -9,7 +9,7 @@ class PDFGenerator {
         doc.addImage(logo, 'PNG', 160, 10, 30, 30);
         doc.setFontSize(18);
         doc.setFont('Helvetica', 'bold');
-        doc.text('Poky Management', doc.internal.pageSize.getWidth() / 2, 25, {align: 'center'});
+        doc.text('Porky Management', doc.internal.pageSize.getWidth() / 2, 25, {align: 'center'});
 
         doc.setFontSize(14);
         doc.setFont('Helvetica', 'bold');

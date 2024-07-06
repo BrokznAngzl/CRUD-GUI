@@ -30,6 +30,10 @@ const SidebarComp = () => {
             href: 'import'
         },
         {
+            title: t('side.menu.export'),
+            href: 'export'
+        },
+        {
             title: t('side.menu.death'),
             href: 'death'
         },
@@ -41,6 +45,7 @@ const SidebarComp = () => {
             title: t('side.menu.case'),
             href: 'case'
         },
+
     ]
 
     const sideReportObj = [

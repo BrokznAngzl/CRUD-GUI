@@ -22,6 +22,7 @@ import DeathPage from "../page/death/DeathPage";
 import AddDeathPage from "../page/death/AddDeathPage";
 import EditDeathPage from "../page/death/EditDeathPage";
 import DeathReportPage from "../page/deathreport/DeathReportPage";
+import ExportPage from "../page/export/ExportPage";
 
 export const AppContext = createContext();
 
@@ -55,6 +56,10 @@ export const SidebarProvider = ({children}) => {
         'import': <ImportPage/>,
         'addimport': <AddImportPage/>,
         'editimport': <EditImportPage/>,
+
+        'export': <ExportPage/>,
+        'addexport': <AddImportPage/>,
+        'editexport': <EditImportPage/>,
 
         'death': <DeathPage/>,
         'adddeath': <AddDeathPage/>,

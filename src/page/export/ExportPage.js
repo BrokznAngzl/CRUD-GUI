@@ -1,44 +1,34 @@
 import React, {useContext, useEffect, useState} from "react";
 import TableComp from "../../component/TableComp";
 import {AppContext} from "../../context/AppContext";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import DataStatusMessage from "../../component/DataStatusMessage";
-import HousingApi from "../../apiurl/HousingApi";
-import BreedsApi from "../../apiurl/BreedsApi";
 import ImportApi from "../../apiurl/ImportApi";
+import CustomerApi from "../../apiurl/CustomerApi";
+import ExportApi from "../../apiurl/ExportApi";
 import QueryFormComp from "./component/QueryFormComp";
 
-const ImportPage = () => {
+const DeathPage = () => {
     const {t} = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {setPage, client} = useContext(AppContext);
-    const columnHeader = [t('table.id'), t('table.import.code'), t('table.date'), t('table.breeds'),
-                                t('table.housing'), t('table.weight'), t('quantity')]
+    const columnHeader = [t('table.id'), t('table.date'), t('table.export.code'), t('table.quantity'),
+        t('table.weight'), t('table.import.code'), t('table.customer')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
-    const [importCode, setImportCode] = useState();
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
-    const [avgWeight, setAvgWeight] = useState()
-    const [quanity, setQuanity] = useState()
-    const [breeds, setBreeds] = useState();
-    const [housingID, setHousingID] = useState();
-    const [allHousing, setAllHousing] = useState([]);
-    const [allBreeds, setAllBreeds] = useState([]);
+    const [importID, setImportID] = useState();
+    const [quantity, setQuantity] = useState()
+    const [customer, setCustomer] = useState()
+    const [exportCode, setExportCode] = useState();
+    const [allImport, setAllImport] = useState([]);
+    const [allCustomer, setallCustomer] = useState([]);
 
-    const getAllBreeds = async () => {
+    const getAllCustomer = async () => {
         try {
-            const response = await client.get(BreedsApi.BREEDS)
-            setAllBreeds(await response.data)
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    const getAllHousing = async () => {
-        try {
-            const response = await client.get(HousingApi.HOUSING)
-            setAllHousing(await response.data)
+            const response = await client.get(CustomerApi.CUSTOMER)
+            setallCustomer(await response.data)
         } catch (e) {
             console.log(e)
         }
@@ -46,9 +36,18 @@ const ImportPage = () => {
 
     const getAllImport = async () => {
         try {
+            const response = await client.get(ImportApi.IMPORT)
+            setAllImport(await response.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const getAllExport = async () => {
+        try {
             setLoading(true)
             setTableData()
-            const response = await client.get(ImportApi.IMPORT)
+            const response = await client.get(ExportApi.EXPORT)
             const queryResult = await response.data
             if (queryResult && queryResult.length > 0) {
                 setTableData(queryResult)
@@ -60,24 +59,20 @@ const ImportPage = () => {
         }
     }
 
-    const findImport = async () => {
+    const findExport = async () => {
         try {
-            if (!startDate && !endDate && !breeds && !housingID && !avgWeight &&!quanity && !importCode) {
-                getAllImport()
-            }
-            else {
+            if (!false) {
+                getAllExport()
+            } else {
                 setLoading(true)
                 setTableData()
-                const importation = {
+                const exportation = {
                     "startDate": startDate,
                     "endDate": endDate,
-                    "breedsID": breeds,
-                    "housingID": housingID,
-                    "avgWeight": avgWeight,
-                    "quanity": quanity,
-                    "importCode": importCode
+                    "quantity": quantity,
+                    "importCode": importID /* check */
                 }
-                const response = await client.post(ImportApi.FIND, importation)
+                const response = await client.post(ExportApi.FIND, exportation)
                 const queryResult = await response.data
                 if (queryResult && queryResult.length > 0) {
                     setTableData(queryResult)
@@ -90,18 +85,18 @@ const ImportPage = () => {
         }
     }
 
-    const deleteImport = async (record) => {
+    const deleteRecord = async (record) => {
         try {
-            const importation = {
-                "importID": record.importID
+            const exportation = {
+                "exportID": record.exportID
             }
-            const response = await client.delete(ImportApi.IMPORT, {
-                data: importation
+            const response = await client.delete(ExportApi.EXPORT, {
+                data: exportation
             })
 
             if (response.status === 204) {
                 console.log('deleted successfully')
-                getAllImport()
+                getAllExport()
             }
         } catch (e) {
             console.log(e)
@@ -111,22 +106,21 @@ const ImportPage = () => {
     const resetForm = () => {
         setStartDate('')
         setEndDate('')
-        setAvgWeight('')
-        setQuanity('')
-        setBreeds('')
-        setHousingID('')
-        setImportCode('')
+        setQuantity('')
+        setExportCode('')
+        setCustomer([])
+        setImportID(null)
     }
 
     const confirmDelete = (record) => {
-        const result = window.confirm(`${t('alert.box.delete.request')} ${record.importCode} at ${record.date} ?`);
-        if (result) deleteImport(record)
+        const result = window.confirm(`${t('alert.box.delete.request')} ${record.exportCode} at ${record.date} ?`);
+        if (result) deleteRecord(record)
     };
 
     const buttons = [
         {
-            func: findImport,
-            name: t('button.find.import'),
+            func: findExport,
+            name: t('button.find.export'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -137,42 +131,34 @@ const ImportPage = () => {
     ]
 
     useEffect(() => {
+        getAllExport()
         getAllImport()
-        getAllBreeds()
-        getAllHousing()
+        getAllCustomer()
     }, []);
 
     return (
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.import')} buttons={buttons}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.export')}
                                {...{
-                                   startDate,
-                                   setStartDate,
-                                   endDate,
-                                   setEndDate,
-                                   breeds,
-                                   setBreeds,
-                                   housingID,
-                                   setHousingID,
-                                   avgWeight,
-                                   setAvgWeight,
-                                   quanity,
-                                   setQuanity,
-                                   allBreeds,
-                                   allHousing,
-                                   importCode,
-                                   setImportCode
+                                   buttons,
+                                   startDate, setStartDate,
+                                   endDate, setEndDate,
+                                   importID, setImportID,
+                                   quantity, setQuantity,
+                                   allImport, allCustomer,
+                                   customer, setCustomer,
+                                   exportCode, setExportCode
                                }}
                 />
 
                 <div className="relative m-5 w-2/4">
                     <div className="flex items-center  justify-end px-1 py-3">
                         <button
-                            onClick={(e) => setPage('addimport')}
+                            onClick={(e) => setPage('addexport')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                            {t('form.header.import.add')}
+                            {t('form.header.export.add')}
                         </button>
                     </div>
                 </div>
@@ -182,7 +168,7 @@ const ImportPage = () => {
                 <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
                 <TableComp {...{tableData, columnHeader}} management={true}
-                           editePage={'editimport'} deleteRecord={confirmDelete}/>
+                           editePage={'editdeath'} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>
             )}
@@ -191,4 +177,4 @@ const ImportPage = () => {
     )
 }
 
-export default ImportPage
+export default DeathPage
