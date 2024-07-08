@@ -88,7 +88,7 @@ const AddImportPage = () => {
         const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const digits = '0123456789';
         const getRandomChar = (chars) => chars[Math.floor(Math.random() * chars.length)];
-        setImportCode(`${getRandomChar(letters)}${getRandomChar(digits)}${getRandomChar(digits)}${getRandomChar(letters)}`);
+        setImportCode(`Im${getRandomChar(letters)}${getRandomChar(digits)}${getRandomChar(digits)}${getRandomChar(letters)}`);
     };
 
     useEffect(() => {

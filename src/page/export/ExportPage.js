@@ -61,7 +61,7 @@ const DeathPage = () => {
 
     const findExport = async () => {
         try {
-            if (!false) {
+            if (!startDate && !endDate && !exportCode && !quantity && !importID && !customer) {
                 getAllExport()
             } else {
                 setLoading(true)
@@ -69,9 +69,12 @@ const DeathPage = () => {
                 const exportation = {
                     "startDate": startDate,
                     "endDate": endDate,
+                    "exportCode": exportCode,
                     "quantity": quantity,
-                    "importCode": importID /* check */
+                    "importID": importID,
+                    "customerID": customer
                 }
+                console.log(exportation)
                 const response = await client.post(ExportApi.FIND, exportation)
                 const queryResult = await response.data
                 if (queryResult && queryResult.length > 0) {
@@ -108,7 +111,7 @@ const DeathPage = () => {
         setEndDate('')
         setQuantity('')
         setExportCode('')
-        setCustomer([])
+        setCustomer('')
         setImportID(null)
     }
 
@@ -168,7 +171,7 @@ const DeathPage = () => {
                 <DataStatusMessage msg={t('status.loading')} textColor={'text-gray-600'}/>
             ) : (tableData && tableData.length !== 0) ? (
                 <TableComp {...{tableData, columnHeader}} management={true}
-                           editePage={'editdeath'} deleteRecord={confirmDelete}/>
+                           editePage={'editexport'} deleteRecord={confirmDelete}/>
             ) : (
                 <DataStatusMessage msg={t('status.no.data')} textColor={'text-red-600'}/>
             )}

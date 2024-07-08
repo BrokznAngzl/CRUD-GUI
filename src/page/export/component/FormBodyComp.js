@@ -4,15 +4,16 @@ import { useTranslation } from 'react-i18next';
 const FormBodyComp = (props) => {
     const {t} = useTranslation();
     const {
-        date, setDate, importID, setImportID, cause, setCause, quanity, setQuanity,
-        allCase, allImport
+        date, setDate, importID, setImportID,
+        cause, quantity, setQuantity, allImport, allCustomer, customer,
+        setCustomer, exportCode, avgWeight, setAvgWeight
     } = props
 
     return (
         <div className="p-6 space-y-6 border-x">
             <form>
-                <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-3">
+                <div className="grid grid-cols-2 gap-6">
+                    <div className="col-span-1">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
@@ -25,49 +26,77 @@ const FormBodyComp = (props) => {
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                         />
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-1">
+                        <label
+                            className="text-start text-sm font-medium text-gray-900 block mb-2"
+                        >
+                            {t('form.label.export.code')}
+                        </label>
+                        <input
+                            value={exportCode}
+                            type="text"
+                            className="pointer-events-none opacity-70 text-start shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                            placeholder={t('form.placeholder.import.code')}
+                            required
+                        />
+                    </div>
+                    <div className="col-span-1">
+                        <label
+                            className="text-start text-sm font-medium text-gray-900 block mb-2"
+                        >
+                            {t('form.label.import.weight')}
+                        </label>
+                        <input
+                            value={avgWeight}
+                            onChange={(e) => setAvgWeight(e.target.value)}
+                            type="number"
+                            className="text-start shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                            placeholder={t('form.placeholder.import.weight')}
+                            required
+                        />
+                    </div>
+                    <div className="col-span-1">
                         <label
                             className="text-start text-sm font-medium text-gray-900 block mb-2"
                         >
                             {t('form.label.import.quantity')}
                         </label>
                         <input
-                            value={quanity}
-                            onChange={(e) => setQuanity(e.target.value)}
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)}
                             type="number"
                             className="text-start shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                             placeholder={t('form.placeholder.import.quantity')}
                             required
                         />
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-1">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >
-                            {t('form.label.death.case')}
+                            {t('form.label.export.customer')}
                         </label>
-                        <select value={cause} onChange={(e) => setCause(e.target.value)
+                        <select value={customer} onChange={(e) => setCustomer(e.target.value)
                         }
                                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                                 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
 
                             <option key={0} value='' selected={cause === null}>
-                                {t('form.placeholder.death.case')}
+                                {t('form.placeholder.export.customer')}
                             </option>
 
                             {
-                                (allCase && allCase.length > 0) && (allCase.map((cuase, index) => {
+                                (allCustomer && allCustomer.length > 0) && (allCustomer.map((customer, index) => {
                                     return (
-                                        <option key={index + 1} value={cuase.causeID}>
-                                            {cuase.cause}
+                                        <option key={index + 1} value={customer.customerID}>
+                                            {customer.customerName}
                                         </option>
                                     )
                                 }))
                             }
                         </select>
                     </div>
-
-                    <div className="col-span-3">
+                    <div className="col-span-1">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >

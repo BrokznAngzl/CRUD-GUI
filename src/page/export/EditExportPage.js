@@ -4,36 +4,28 @@ import {useTranslation} from 'react-i18next';
 import SaveDataSuccessComp from "../../component/SaveDataSuccessComp";
 import FormHeaderComp from "../../component/form/FormHeaderComp";
 import FormButtonComp from "../../component/form/FormButtonComp";
-import FormBodyComp from "./component/FormBodyComp";
 import SaveDataFailedComp from "../../component/SaveDataFailedComp";
 import ImportApi from "../../apiurl/ImportApi";
-import CaseApi from "../../apiurl/CaseApi";
-import DeathApi from "../../apiurl/DeathApi";
+import ExportApi from "../../apiurl/ExportApi";
+import FormBodyComp from "./component/FormBodyComp";
+import CustomerApi from "../../apiurl/CustomerApi";
+import HousingApi from "../../apiurl/HousingApi";
+import BreedsApi from "../../apiurl/BreedsApi";
 
-const EditDeathPage = () => {
+const AddExportPage = () => {
     const {t} = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [alertBox, setAlertBox] = useState(false);
-    const [importID, setImportID] = useState(editData.importID);
-    const [date, setDate] = useState(editData.date);
-    const [cause, setCause] = useState();
-    const [quanity, setQuanity] = useState(editData.quantity)
-    const [allCase, setAllCase] = useState([])
+    const [alertBox, setAlertBox] = useState(false)
+    const [exportID, setExportID] = useState(editData.exportID)
+    const [date, setDate] = useState(editData.date)
+    const [quantity, setQuantity] = useState(editData.quantity)
+    const [avgWeight, setAvgWeight] = useState(editData.avgweight);
+    const [exportCode, setExportCode] = useState(editData.exportCode);
+    const [importID, setImportID] = useState()
+    const [customer, setCustomer] = useState()
     const [allImport, setAllImport] = useState([]);
-
-    const findCase = async (name) => {
-        try {
-            const response = await client.get(CaseApi.CASENAME, {
-                params: {
-                    name: name
-                }
-            })
-            setCause(await response.data.causeID)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    const [allCustomer, setallCustomer] = useState([]);
 
     const findImport = async (code) => {
         try {
@@ -48,29 +40,43 @@ const EditDeathPage = () => {
         }
     }
 
-    const saveDeath = async () => {
+    const findCustomer = async (name) => {
         try {
-            const death = {
-                "deathID": editData.deathID,
-                "date": date,
-                "quantity": quanity,
-                "cause": cause,
-                "importid": importID
+            const response = await client.get(CustomerApi.NAME, {
+                params: {
+                    name: name
+                }
+            })
+            setCustomer(await response.data.customerID)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const createExport = async () => {
+        try {
+            const exportation = {
+                exportID: exportID,
+                date: date,
+                customerID: customer,
+                importID: importID,
+                exportCode: exportCode,
+                quantity: quantity,
+                avgweight: avgWeight
             }
 
-            const response = await client.put(DeathApi.DEATH, death);
+            const response = await client.put(ExportApi.EXPORT, exportation);
             setResponseCode(response.status)
             setAlertBox(true)
-
         } catch (error) {
             setAlertBox(true)
         }
     }
 
-    const getAllCase = async () => {
+    const getAllCustomer = async () => {
         try {
-            const response = await client.get(CaseApi.CASE)
-            setAllCase(await response.data)
+            const response = await client.get(CustomerApi.CUSTOMER)
+            setallCustomer(await response.data)
         } catch (e) {
             console.log(e)
         }
@@ -86,17 +92,19 @@ const EditDeathPage = () => {
     }
 
     const resetForm = () => {
-        findCase(editData.cause)
-        findImport(editData.importCode)
         setDate(editData.date)
-        setCause(editData.cause)
-        setQuanity(editData.quantity)
+        setQuantity(editData.quantity)
+        setExportCode(editData.exportCode)
+        setCustomer(editData.customerID)
+        setAvgWeight(editData.avgweight)
+        findCustomer(editData.customerName)
+        findImport(editData.importCode)
     }
 
     const buttons = [
         {
-            func: saveDeath,
-            name: t('button.save.death'),
+            func: createExport,
+            name: t('button.save.export'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
         {
@@ -107,9 +115,9 @@ const EditDeathPage = () => {
     ]
 
     useEffect(() => {
-        findCase(editData.cause)
+        findCustomer(editData.customerName)
         findImport(editData.importCode)
-        getAllCase()
+        getAllCustomer()
         getAllImport()
     }, []);
 
@@ -129,22 +137,24 @@ const EditDeathPage = () => {
             <div className="text-center m-5 mt-24 w-2/4">
                 {alertBox && (
                     responseCode === 200 ? (
-                        <SaveDataSuccessComp title={t('global.death')}/>
+                        <SaveDataSuccessComp title={t('global.export')}/>
                     ) : (
-                        <SaveDataFailedComp title={t('global.death')}/>
+                        <SaveDataFailedComp title={t('global.export')}/>
                     )
                 )}
             </div>
 
             <div className="bg-white relative m-5 w-2/4 rounded-lg">
-                <FormHeaderComp setPage={setPage} title={t('form.header.death.edit')} prevPage={'death'}/>
+                <FormHeaderComp setPage={setPage} title={t('form.header.export.edit')} prevPage={'export'}/>
                 <FormBodyComp
                     {...{
                         date, setDate,
                         importID, setImportID,
-                        cause, setCause,
-                        quanity, setQuanity,
-                        allCase, allImport
+                        quantity, setQuantity,
+                        allImport, allCustomer,
+                        customer, setCustomer,
+                        exportCode, buttons,
+                        avgWeight, setAvgWeight
                     }}
                 />
 
@@ -156,4 +166,4 @@ const EditDeathPage = () => {
 
 }
 
-export default EditDeathPage
+export default AddExportPage

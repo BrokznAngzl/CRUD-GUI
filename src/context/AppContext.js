@@ -23,6 +23,8 @@ import AddDeathPage from "../page/death/AddDeathPage";
 import EditDeathPage from "../page/death/EditDeathPage";
 import DeathReportPage from "../page/deathreport/DeathReportPage";
 import ExportPage from "../page/export/ExportPage";
+import AddExportPage from "../page/export/AddExportPage";
+import EditExportPage from "../page/export/EditExportPage";
 
 export const AppContext = createContext();
 
@@ -58,8 +60,8 @@ export const SidebarProvider = ({children}) => {
         'editimport': <EditImportPage/>,
 
         'export': <ExportPage/>,
-        'addexport': <AddImportPage/>,
-        'editexport': <EditImportPage/>,
+        'addexport': <AddExportPage/>,
+        'editexport': <EditExportPage/>,
 
         'death': <DeathPage/>,
         'adddeath': <AddDeathPage/>,
