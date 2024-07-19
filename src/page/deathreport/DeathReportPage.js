@@ -138,7 +138,7 @@ const DeathReportPage = () => {
                     <div className="flex items-center  justify-end px-1 py-3">
                         <button
                             onClick={(e) =>
-                                PDFGenerator.exportPDF(columnHeader, tableData, t('form.header.report.death'), 'DeathRateReport.pdf')}
+                                PDFGenerator.exportPDF(t, columnHeader, tableData, t('form.header.report.death'), 'DeathRateReport.pdf')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                             {t('form.header.report.pdf')}
                         </button>

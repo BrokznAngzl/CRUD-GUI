@@ -1,4 +1,6 @@
 {
+  "app.name": "porky management",
+
   "global.farm": "farm",
   "global.customer": "customer",
   "global.breeds": "breeds",

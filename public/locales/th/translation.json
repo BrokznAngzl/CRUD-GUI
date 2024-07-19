@@ -1,4 +1,6 @@
 {
+  "app.name": "การจัดการแบบคูลๆ",
+
   "global.farm": "ฟาร์ม",
   "global.customer": "ลูกค้า",
   "global.breeds": "สายพันธ์",

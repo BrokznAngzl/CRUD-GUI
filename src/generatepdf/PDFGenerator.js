@@ -3,13 +3,13 @@ import 'jspdf-autotable';
 import logo from '../profile.JPEG';
 
 class PDFGenerator {
-    static exportPDF(tableColumn, recordsData, tableName, reportFileName) {
+    static exportPDF(t, tableColumn, recordsData, tableName, reportFileName) {
         const doc = new jsPDF();
 
         doc.addImage(logo, 'PNG', 160, 10, 30, 30);
         doc.setFontSize(18);
         doc.setFont('Helvetica', 'bold');
-        doc.text('Porky Management', doc.internal.pageSize.getWidth() / 2, 25, {align: 'center'});
+        doc.text(PDFGenerator.capitalizeWords(t('app.name')), doc.internal.pageSize.getWidth() / 2, 25, {align: 'center'});
 
         doc.setFontSize(14);
         doc.setFont('Helvetica', 'bold');
@@ -32,6 +32,13 @@ class PDFGenerator {
         });
 
         doc.save(reportFileName);
+    }
+
+    static capitalizeWords(str) {
+        return str
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
     }
 };
 
