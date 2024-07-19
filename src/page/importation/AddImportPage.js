@@ -10,11 +10,12 @@ import HousingApi from "../../apiurl/HousingApi";
 import ImportApi from "../../apiurl/ImportApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 
-const AddFarmPage = () => {
+const AddImportPage = () => {
     const {t} = useTranslation();
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
+    const [importCode, setImportCode] = useState();
     const [date, setDate] = useState();
     const [avgWeight, setAvgWeight] = useState()
     const [quanity, setQuanity] = useState()
@@ -31,12 +32,13 @@ const AddFarmPage = () => {
                 "quanity": quanity,
                 "breeds": breeds,
                 "housingID": housingID,
+                "importCode": importCode
             }
 
             const response = await client.post(ImportApi.IMPORT, importation);
             setResponseCode(response.status)
             setAlertBox(true)
-
+            generateImportCode()
         } catch (error) {
             setAlertBox(true)
         }
@@ -82,9 +84,17 @@ const AddFarmPage = () => {
 
     ]
 
+    const generateImportCode = () => {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const digits = '0123456789';
+        const getRandomChar = (chars) => chars[Math.floor(Math.random() * chars.length)];
+        setImportCode(`Im${getRandomChar(letters)}${getRandomChar(digits)}${getRandomChar(digits)}${getRandomChar(letters)}`);
+    };
+
     useEffect(() => {
         getAllBreeds()
         getAllHousing()
+        generateImportCode()
     }, []);
 
     useEffect(() => {
@@ -126,6 +136,7 @@ const AddFarmPage = () => {
                         housingID,
                         allHousing,
                         allBreeds,
+                        importCode
                     }}
                 />
 
@@ -137,4 +148,4 @@ const AddFarmPage = () => {
 
 }
 
-export default AddFarmPage
+export default AddImportPage

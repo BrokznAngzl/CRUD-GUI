@@ -1,7 +1,10 @@
 {
+  "app.name": "การจัดการแบบคูลๆ",
+
   "global.farm": "ฟาร์ม",
   "global.customer": "ลูกค้า",
   "global.breeds": "สายพันธ์",
+  "global.case": "สาเหตุ",
   "global.housing": "โรงเรือน",
   "global.import": "การนำเข้า",
   "global.export": "การส่งออก",
@@ -12,10 +15,13 @@
   "side.menu.farm": "ฟาร์ม",
   "side.menu.customer": "ลูกค้า",
   "side.menu.breeds": "สายพันธ์",
+  "side.menu.case": "สาเหตุ",
   "side.menu.housing": "โรงเรือน",
   "side.menu.import": "การนำเข้า",
   "side.menu.export": "การส่งออก",
   "side.menu.death": "บันทึกการตาย",
+  "side.menu.report.death": "อัตราการตาย",
+  "side.menu.report.adg": "อัตราการเติบโต",
 
   "form.header.farm": "ฟาร์ม",
   "form.header.farm.add": "เพิ่ม ฟาร์ม",
@@ -28,6 +34,10 @@
   "form.header.breeds": "สายพันธ์",
   "form.header.breeds.add": "เพิ่ม สายพันธ์",
   "form.header.breeds.edit": "แก้ไข สายพันธ์",
+
+  "form.header.case": "สาเหตุ",
+  "form.header.case.add": "เพิ่ม สาเหตุ",
+  "form.header.case.edit": "แก้ไข สาเหตุ",
 
   "form.header.housing": "โรงเรือน",
   "form.header.housing.add": "เพิ่ม โรงเรือน",
@@ -44,6 +54,10 @@
   "form.header.death": "บันทึกการตาย",
   "form.header.death.add": "เพิ่ม บันทึกการตาย",
   "form.header.death.edit": "แก้ไข บันทึกการตาย",
+
+  "form.header.report.pdf": "รับ PDF",
+  "form.header.report.death": "อัตราการตาย",
+  "form.header.report.adg": "อัตราการเติบโต",
 
   "form.label.farm.name": "ชื่อฟาร์ม",
   "form.placeholder.farm.name": "อิขิโกะฟาร์ม",
@@ -67,7 +81,12 @@
   "form.label.breeds.name": "ชื่อสายพันธ์",
   "form.placeholder.breeds.name": "คุโรบุตะ",
 
+  "form.label.case.name": "สาเหตุ",
+  "form.placeholder.case.name": "เต้นจนตุย",
+
   "form.label.import.date": "วันที่",
+  "form.label.import.code": "รหัสการนำเข้า",
+  "form.placeholder.import.code": "A32B",
   "form.label.import.date.start": "วันเริ่ม",
   "form.label.import.date.end": "วันจบ",
   "form.label.import.breeds": "สายพันธ์",
@@ -79,19 +98,38 @@
   "form.label.import.quantity": "จำนวน",
   "form.placeholder.import.quantity": "20",
 
+  "form.label.death.import": "การนำเข้า",
+  "form.placeholder.death.import": "เลือกการนำเข้า",
+  "form.label.death.case": "สาเหตุ",
+  "form.placeholder.death.case": "เลือกสาเหตุ",
+
+  "form.label.export.code": "รหัสการส่งออก",
+  "form.placeholder.export.code": "เลือกการส่งออก",
+  "form.label.export.customer": "ลูกค้า",
+  "form.placeholder.export.customer": "เลือกลูกค้า",
+
   "table.id": "ไอดี",
+  "table.import.code": "รหัสการนำเข้า",
+  "table.export.code": "รหัสการส่งออก",
   "table.date": "วันที่",
+  "table.death": "ตาย",
+  "table.percentage": "เปอร์เซ็น",
   "table.breeds": "สายพันธ์",
+  "table.case": "สาเหตุ",
   "table.housing": "โรงเรือน",
   "table.weight": "น้ำหนักเฉลี่ย",
+  "table.weight.gain": "น้ำหนักที่เพิ่มขึ้น",
   "table.quantity": "น้ำหนัก",
   "table.email": "อีเมล",
   "table.phone": "เบอร์โทรศัพท์",
   "table.name": "ชื่อ",
   "table.location": "ตำแหน่ง",
   "table.farm": "ฟาร์ม",
+  "table.customer": "ลูกค้า",
   "table.stall": "จำนวนคอก",
   "table.management": "การจัดการ",
+  "table.day": "จำนวนวัน",
+  "table.rate.adg": "อัตราการเติบโต",
 
   "button.edit": "แก้ไข",
   "button.add": "เพิ่ม",
@@ -101,14 +139,17 @@
   "button.find.farm": "ค้นหาฟาร์ม",
   "button.find.customer": "ค้นหาลุกค้า",
   "button.find.breeds": "ค้นหาสายพันธ์",
+  "button.find.case": "ค้นหาสาเหตุ",
   "button.find.housing": "ค้นหาโรงเรือน",
   "button.find.import": "ค้นหาการนำเข้า",
   "button.find.export": "ค้นหาการส่งออก",
   "button.find.death": "ค้นหาบันทึกการตาย",
+  "button.find.report": "ค้นหารายงาน",
 
   "button.save.farm": "บันทึกฟาร์ม",
   "button.save.customer": "บันทึกลูกค้า",
   "button.save.breeds": "บันทึกสายพันธ์",
+  "button.save.case": "บันทึกสาเหตุ",
   "button.save.housing": "บันทึกโรงเรือน",
   "button.save.import": "บันทึกการนำเข้า",
   "button.save.export" :"บันทึกการส่งออก",
@@ -119,5 +160,4 @@
 
   "alert.box.delete.request": "ต้องการลบ",
   "alert.box.delete.success": "ลบสำเร็จ"
-
 }

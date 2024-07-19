@@ -12,7 +12,6 @@ const EditBreedsPage = () => {
     const { t } = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [breedsName, setBreedsName] = useState(editData.breedsName);
 

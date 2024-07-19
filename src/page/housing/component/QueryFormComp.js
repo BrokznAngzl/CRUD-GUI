@@ -9,7 +9,7 @@ const QueryFormComp = (props) => {
 
     return (
         <div className="bg-white border rounded-lg  relative m-5 w-2/4">
-            <FormQueryHeaderComp showForm={showForm} toggleForm={toggleForm} title={title}/>
+            <FormQueryHeaderComp {...{toggleForm, showForm, title}}/>
 
             {showForm && (
                 <FormBodyComp setHousingName={setHousingName} housingName={housingName} setStallQuanity={setStallQuanity}

@@ -13,7 +13,6 @@ const AddFarmPage = () => {
     const {t} = useTranslation()
     const {setPage, client} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [housingName, setHousingName] = useState(null)
     const [stallQuanity, setStallQuanity] = useState(null);

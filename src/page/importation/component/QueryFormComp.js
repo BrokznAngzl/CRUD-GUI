@@ -7,12 +7,12 @@ const QueryFormComp = (props) => {
     const {
         toggleForm, showForm, title, buttons,
         startDate, setStartDate, endDate, setEndDate, breeds, setBreeds, housingID, setHousingID, avgWeight,
-        setAvgWeight, quanity, setQuanity, allBreeds, allHousing
+        setAvgWeight, quanity, setQuanity, allBreeds, allHousing, importCode, setImportCode
     } = props
 
     return (
         <div className="bg-white border rounded-lg  relative m-5 w-2/4">
-            <FormQueryHeaderComp showForm={showForm} toggleForm={toggleForm} title={title}/>
+            <FormQueryHeaderComp {...{toggleForm, showForm, title}}/>
 
             {showForm && (
                 <QueryFormBodyComp
@@ -20,7 +20,7 @@ const QueryFormComp = (props) => {
                         startDate, setStartDate, endDate, setEndDate,
                         setAvgWeight, avgWeight, setQuanity, quanity,
                         setBreeds, breeds, setHousingID, housingID,
-                        allHousing, allBreeds,
+                        allHousing, allBreeds, importCode, setImportCode
                     }}
                 />
             )}

@@ -13,7 +13,6 @@ const EditHousing = () => {
     const {t} = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
-    const [error, setError] = useState();
     const [alertBox, setAlertBox] = useState(false);
     const [housingName, setHousingName] = useState(editData.housingName);
     const [stallQuanity, setStallQuanity] = useState(editData.stallQuanity);
@@ -59,7 +58,7 @@ const EditHousing = () => {
     const resetForm = () => {
         setHousingName(editData.housingName);
         setStallQuanity(editData.stallQuanity)
-        setFarm(editData.farmID)
+        findFarm(editData.farmName)
     }
 
     const buttons = [

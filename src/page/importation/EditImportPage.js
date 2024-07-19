@@ -10,15 +10,16 @@ import HousingApi from "../../apiurl/HousingApi";
 import ImportApi from "../../apiurl/ImportApi";
 import BreedsApi from "../../apiurl/BreedsApi";
 
-const AddFarmPage = () => {
+const AddImportPage = () => {
     const {t} = useTranslation();
     const {setPage, client, editData} = useContext(AppContext);
     const [responseCode, setResponseCode] = useState();
     const [alertBox, setAlertBox] = useState(false);
+    const [importCode, setImportCode] = useState(editData.importCode);
     const [date, setDate] = useState(editData.date);
     const [avgWeight, setAvgWeight] = useState(editData.avgWeight);
     const [quanity, setQuanity] = useState(editData.quanity)
-    const [breeds, setBreeds] = useState();
+    const [breeds, setBreeds] = useState(editData.breedsID);
     const [housingID, setHousingID] = useState();
     const [allHousing, setAllHousing] = useState([]);
     const [allBreeds, setAllBreeds] = useState([]);
@@ -53,6 +54,7 @@ const AddFarmPage = () => {
         try {
             const importation = {
                 "importID": editData.importID,
+                "importCode": importCode,
                 "date": date,
                 "avgWeight": avgWeight,
                 "quanity": quanity,
@@ -88,11 +90,12 @@ const AddFarmPage = () => {
     }
 
     const resetForm = () => {
-        setDate('')
-        setBreeds('')
-        setAvgWeight('')
-        setQuanity('')
-        setHousingID('')
+        findHousing(editData.housingName)
+        findBreeds(editData.breedsName)
+        setDate(editData.date)
+        setBreeds(editData.breedsID)
+        setAvgWeight(editData.avgWeight)
+        setQuanity(editData.quanity)
     }
 
     const buttons = [
@@ -126,6 +129,7 @@ const AddFarmPage = () => {
         }
     }, [alertBox]);
 
+    console.log(editData)
     return (
         <div>
             <div className="text-center m-5 mt-24 w-2/4">
@@ -154,6 +158,7 @@ const AddFarmPage = () => {
                         housingID,
                         allHousing,
                         allBreeds,
+                        importCode,
                     }}
                 />
 
@@ -165,4 +170,4 @@ const AddFarmPage = () => {
 
 }
 
-export default AddFarmPage
+export default AddImportPage

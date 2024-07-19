@@ -1,7 +1,10 @@
 {
+  "app.name": "porky management",
+
   "global.farm": "farm",
   "global.customer": "customer",
   "global.breeds": "breeds",
+  "global.case": "case",
   "global.housing": "housing",
   "global.import": "import",
   "global.export": "export",
@@ -12,10 +15,13 @@
   "side.menu.farm": "Farm",
   "side.menu.customer": "Customer",
   "side.menu.breeds": "Breeds",
+  "side.menu.case": "Case",
   "side.menu.housing": "housing",
   "side.menu.import": "Import",
   "side.menu.export": "Export",
   "side.menu.death": "Death",
+  "side.menu.report.death": "Death Rate",
+  "side.menu.report.adg": "Average Dairy Gain",
 
   "form.header.farm": "Farm",
   "form.header.farm.add": "Add Farm",
@@ -28,6 +34,10 @@
   "form.header.breeds": "Breeds",
   "form.header.breeds.add": "Add Breeds",
   "form.header.breeds.edit": "Edit Breeds",
+
+  "form.header.case": "Case",
+  "form.header.case.add": "Add Case",
+  "form.header.case.edit": "Edit Case",
 
   "form.header.housing": "Housing",
   "form.header.housing.add": "Add Housing",
@@ -44,6 +54,10 @@
   "form.header.death": "Death",
   "form.header.death.add": "Add Death",
   "form.header.death.edit": "Edit Death",
+
+  "form.header.report.pdf": "Get PDF",
+  "form.header.report.death": "Death Rate",
+  "form.header.report.adg": "Average Daily Gain",
 
   "form.label.farm.name": "Farm Name",
   "form.placeholder.farm.name": "Ichigo Farm",
@@ -67,7 +81,12 @@
   "form.label.breeds.name": "Breeds Name",
   "form.placeholder.breeds.name": "Kurobuta",
 
+  "form.label.case.name": "Cause",
+  "form.placeholder.case.name": "Dance till death",
+
   "form.label.import.date": "Date",
+  "form.label.import.code": "Import Code",
+  "form.placeholder.import.code": "A32B",
   "form.label.import.date.start": "Start Date",
   "form.label.import.date.end": "End Date",
   "form.label.import.breeds": "Breeds",
@@ -79,19 +98,38 @@
   "form.label.import.quantity": "Quantity",
   "form.placeholder.import.quantity": "20",
 
+  "form.label.death.import": "Import",
+  "form.placeholder.death.import": "Select Import",
+  "form.label.death.case": "Case",
+  "form.placeholder.death.case": "Select Case",
+
+  "form.label.export.code": "Export Code",
+  "form.placeholder.export.code": "Select Export",
+  "form.label.export.customer": "Customer",
+  "form.placeholder.export.customer": "Select Customer",
+
   "table.id": "id",
+  "table.import.code": "import code",
+  "table.export.code": "export code",
   "table.date": "date",
+  "table.death": "death",
+  "table.percentage": "percentage",
   "table.breeds": "breeds",
+  "table.case": "cause",
   "table.housing": "housing",
   "table.weight": "average weight",
+  "table.weight.gain": "gain weight",
   "table.quantity": "quantity",
   "table.email": "email",
   "table.phone": "phone",
   "table.name": "name",
   "table.location": "location",
   "table.farm": "farm",
+  "table.customer": "customer",
   "table.stall": "stall quantity",
   "table.management": "management",
+  "table.day": "day",
+  "table.rate.adg": "adg rate",
 
   "button.edit": "Edit",
   "button.add": "Add",
@@ -102,13 +140,16 @@
   "button.find.customer": "Find Customer",
   "button.find.breeds": "Find Breeds",
   "button.find.housing": "Find Housing",
+  "button.find.case": "Find Case",
   "button.find.import": "Find Import",
   "button.find.export": "Find Export",
   "button.find.death": "Find Death",
+  "button.find.report": "Find Report",
 
   "button.save.farm": "Save Farm",
   "button.save.customer": "Save Customer",
   "button.save.breeds": "Save Breeds",
+  "button.save.case": "Save Case",
   "button.save.housing": "Save Housing",
   "button.save.import": "Save Import",
   "button.save.export" :"Save Export",
@@ -119,5 +160,4 @@
 
   "alert.box.delete.request": "Do you want to delete",
   "alert.box.delete.success": "deleted successfully"
-
 }

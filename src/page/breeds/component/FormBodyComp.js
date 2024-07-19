@@ -9,7 +9,7 @@ const FormBodyComp = (props) => {
         <div className="p-6 space-y-6 border-x">
             <form>
                 <div className="grid grid-cols-2 gap-6">
-                    <div className="col-span-1">
+                    <div className="col-span-full">
                         <label
                             className="text-sm font-medium text-gray-900 block mb-2"
                         >

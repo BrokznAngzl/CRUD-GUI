@@ -4,7 +4,7 @@ import {AppContext} from '../context/AppContext';
 import { useTranslation } from 'react-i18next';
 import SideMenuComp from "./SideMenuComp";
 import {TbFileReport, TbTable} from "react-icons/tb";
-import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
+import {AiFillCaretDown, AiFillCaretUp, AiFillCaretLeft} from "react-icons/ai";
 
 const SidebarComp = () => {
     const {t} = useTranslation();
@@ -30,26 +30,39 @@ const SidebarComp = () => {
             href: 'import'
         },
         {
+            title: t('side.menu.export'),
+            href: 'export'
+        },
+        {
+            title: t('side.menu.death'),
+            href: 'death'
+        },
+        {
             title: t('side.menu.farm'),
             href: 'farm'
         },
+        {
+            title: t('side.menu.case'),
+            href: 'case'
+        },
+
     ]
 
     const sideReportObj = [
         {
-            title: 'TEST Report',
-            href: 'abcreport'
+            title: t('side.menu.report.adg'),
+            href: 'adgrpt'
         },
         {
-            title: 'DFG Report',
-            href: 'dfgreport'
+            title: t('side.menu.report.death'),
+            href: 'deathraterpt'
         },
     ]
 
     return (
         <div className={`md:flex md:flex-col w-64 bg-gray-800 sidebar ${sidebarItems ? 'show' : 'hidden'}`}>
             <div className="flex items-center justify-center h-16 bg-gray-900">
-                <span className="text-white font-bold uppercase">Porky Database</span>
+                <span className="text-white font-bold uppercase">{t('app.name')}</span>
             </div>
             <div className="flex flex-col flex-1 overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 bg-gray-800">
@@ -66,7 +79,7 @@ const SidebarComp = () => {
                             </div>
                             <div className={"flex justify-content items-center px-4 py-2"}>
                                 {
-                                    tableMenu ? <AiFillCaretUp/> : <AiFillCaretDown/>
+                                    tableMenu ? <AiFillCaretDown/> : <AiFillCaretLeft/>
                                 }
                             </div>
                         </div>
@@ -88,7 +101,7 @@ const SidebarComp = () => {
                             </div>
                             <div className={"flex justify-content items-center px-4 py-2"}>
                                 {
-                                    reportMenu ? <AiFillCaretUp/> : <AiFillCaretDown/>
+                                    reportMenu ? <AiFillCaretDown/> : <AiFillCaretLeft/>
                                 }
                             </div>
                         </div>

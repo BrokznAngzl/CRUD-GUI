@@ -1,4 +1,4 @@
-import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
+import {AiFillCaretDown, AiFillCaretLeft} from "react-icons/ai";
 import React from "react";
 
 const FormQueryHeaderComp = (props) => {
@@ -13,7 +13,7 @@ const FormQueryHeaderComp = (props) => {
                 onClick={(e) => toggleForm(!showForm)}
                 className="bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg p-1.5 ml-auto inline-flex items-center"
             >
-                {showForm ? <AiFillCaretUp/> : <AiFillCaretDown/>}
+                {showForm ? <AiFillCaretDown/> : <AiFillCaretLeft/>}
             </button>
         </div>
     )
