@@ -104,6 +104,7 @@
   "form.placeholder.death.case": "เลือกสาเหตุ",
 
   "form.label.export.code": "รหัสการส่งออก",
+  "form.placeholder.export.code": "เลือกการส่งออก",
   "form.label.export.customer": "ลูกค้า",
   "form.placeholder.export.customer": "เลือกลูกค้า",
 
@@ -117,6 +118,7 @@
   "table.case": "สาเหตุ",
   "table.housing": "โรงเรือน",
   "table.weight": "น้ำหนักเฉลี่ย",
+  "table.weight.gain": "น้ำหนักที่เพิ่มขึ้น",
   "table.quantity": "น้ำหนัก",
   "table.email": "อีเมล",
   "table.phone": "เบอร์โทรศัพท์",
@@ -126,6 +128,8 @@
   "table.customer": "ลูกค้า",
   "table.stall": "จำนวนคอก",
   "table.management": "การจัดการ",
+  "table.day": "จำนวนวัน",
+  "table.rate.adg": "อัตราการเติบโต",
 
   "button.edit": "แก้ไข",
   "button.add": "เพิ่ม",

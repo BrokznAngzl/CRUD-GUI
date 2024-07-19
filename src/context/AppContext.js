@@ -25,6 +25,7 @@ import DeathReportPage from "../page/deathreport/DeathReportPage";
 import ExportPage from "../page/export/ExportPage";
 import AddExportPage from "../page/export/AddExportPage";
 import EditExportPage from "../page/export/EditExportPage";
+import ADGReportPage from "../page/adgreport/ADGReportPage";
 
 export const AppContext = createContext();
 
@@ -67,7 +68,8 @@ export const SidebarProvider = ({children}) => {
         'adddeath': <AddDeathPage/>,
         'editdeath': <EditDeathPage/>,
 
-        'deathraterpt': <DeathReportPage/>
+        'deathraterpt': <DeathReportPage/>,
+        'adgrpt': <ADGReportPage/>,
     };
 
     const client = axios.create({

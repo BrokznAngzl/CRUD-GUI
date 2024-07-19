@@ -62,7 +62,7 @@ const SidebarComp = () => {
     return (
         <div className={`md:flex md:flex-col w-64 bg-gray-800 sidebar ${sidebarItems ? 'show' : 'hidden'}`}>
             <div className="flex items-center justify-center h-16 bg-gray-900">
-                <span className="text-white font-bold uppercase">Porky Database</span>
+                <span className="text-white font-bold uppercase">{t('app.name')}</span>
             </div>
             <div className="flex flex-col flex-1 overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 bg-gray-800">

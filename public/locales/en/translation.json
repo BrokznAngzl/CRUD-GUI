@@ -104,6 +104,7 @@
   "form.placeholder.death.case": "Select Case",
 
   "form.label.export.code": "Export Code",
+  "form.placeholder.export.code": "Select Export",
   "form.label.export.customer": "Customer",
   "form.placeholder.export.customer": "Select Customer",
 
@@ -117,6 +118,7 @@
   "table.case": "cause",
   "table.housing": "housing",
   "table.weight": "average weight",
+  "table.weight.gain": "gain weight",
   "table.quantity": "quantity",
   "table.email": "email",
   "table.phone": "phone",
@@ -126,6 +128,8 @@
   "table.customer": "customer",
   "table.stall": "stall quantity",
   "table.management": "management",
+  "table.day": "day",
+  "table.rate.adg": "adg rate",
 
   "button.edit": "Edit",
   "button.add": "Add",

@@ -3,38 +3,39 @@ import TableComp from "../../component/TableComp";
 import {AppContext} from "../../context/AppContext";
 import {useTranslation} from 'react-i18next';
 import DataStatusMessage from "../../component/DataStatusMessage";
-import ImportApi from "../../apiurl/ImportApi";
 import DeathApi from "../../apiurl/DeathApi";
 import DeathRptApi from "../../apiurl/DeathRptApi";
 import QueryFormComp from "./component/QueryFormComp";
 import PDFGenerator from "../../generatepdf/PDFGenerator";
+import ADGRptApi from "../../apiurl/ADGRptApi";
+import ExportApi from "../../apiurl/ExportApi";
 
-const DeathReportPage = () => {
+const ADGReportPage = () => {
     const {t} = useTranslation();
     const [queryForm, setQueryForm] = useState(false);
     const {client} = useContext(AppContext);
-    const columnHeader = [t('table.import.code'), t('table.date'), t('table.quantity'), t('table.death'),  t('table.percentage')]
+    const columnHeader = [t('table.export.code'), t('table.date'), t('table.weight.gain'), t('table.day'),  t('table.rate.adg')]
     const [tableData, setTableData] = useState([])
     const [loading, setLoading] = useState(false);
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
-    const [importID, setImportID] = useState();
-    const [allImport, setAllImport] = useState([]);
+    const [exportID, setExportID] = useState();
+    const [allExport, setAllExport] = useState([]);
 
-    const getAllImport = async () => {
+    const getAllExport = async () => {
         try {
-            const response = await client.get(ImportApi.IMPORT)
-            setAllImport(await response.data)
+            const response = await client.get(ExportApi.EXPORT)
+            setAllExport(await response.data)
         } catch (e) {
             console.log(e)
         }
     }
 
-    const getAllDeathReport = async () => {
+    const getAllADGReport = async () => {
         try {
             setLoading(true)
             setTableData()
-            const response = await client.get(DeathRptApi.REPORT)
+            const response = await client.get(ADGRptApi.REPORT)
             const queryResult = await response.data
             if (queryResult && queryResult.length > 0) {
                 setTableData(queryResult)
@@ -46,19 +47,19 @@ const DeathReportPage = () => {
         }
     }
 
-    const findDeathRpt = async () => {
+    const findADGRpt = async () => {
         try {
-            if (!startDate && !endDate && !importID) {
-                getAllDeathReport()
+            if (!startDate && !endDate && !exportID) {
+                getAllADGReport()
             } else {
                 setLoading(true)
                 setTableData()
-                const death = {
+                const ADGReqModel = {
                     "startDate": startDate,
                     "endDate": endDate,
-                    "importCode": importID
+                    "exportID": exportID
                 }
-                const response = await client.post(DeathRptApi.FIND, death)
+                const response = await client.post(ADGRptApi.FIND, ADGReqModel)
                 const queryResult = await response.data
                 if (queryResult && queryResult.length > 0) {
                     setTableData(queryResult)
@@ -82,7 +83,7 @@ const DeathReportPage = () => {
 
             if (response.status === 204) {
                 console.log('deleted successfully')
-                getAllDeathReport()
+                getAllADGReport()
             }
         } catch (e) {
             console.log(e)
@@ -92,7 +93,7 @@ const DeathReportPage = () => {
     const resetForm = () => {
         setStartDate('')
         setEndDate('')
-        setImportID(null)
+        setExportID(null)
     }
 
     const confirmDelete = (record) => {
@@ -102,7 +103,7 @@ const DeathReportPage = () => {
 
     const buttons = [
         {
-            func: findDeathRpt,
+            func: findADGRpt,
             name: t('button.find.report'),
             colorStyle: 'bg-green-600 hover:bg-green-700',
         },
@@ -114,23 +115,23 @@ const DeathReportPage = () => {
     ]
 
     useEffect(() => {
-        getAllDeathReport()
-        getAllImport()
+        getAllADGReport()
+        getAllExport()
     }, []);
 
     return (
         <div className="w-full mt-16">
             {/* form */}
             <div className={"flex justify-between"}>
-                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.report.death')}
+                <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.report.adg')}
                                buttons={buttons}
                                {...{
                                    startDate,
                                    setStartDate,
                                    endDate,
                                    setEndDate,
-                                   importID, setImportID,
-                                   allImport
+                                   exportID, setExportID,
+                                   allExport
                                }}
                 />
 
@@ -138,7 +139,7 @@ const DeathReportPage = () => {
                     <div className="flex items-center  justify-end px-1 py-3">
                         <button
                             onClick={(e) =>
-                                PDFGenerator.exportPDF(t, columnHeader, tableData, t('form.header.report.death'), 'DeathRateReport.pdf')}
+                                PDFGenerator.exportPDF(t, columnHeader, tableData, t('form.header.report.adg'), 'AverageDailyGain.pdf')}
                             className="text-white bg-green-600 hover:bg-green-700 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                             {t('form.header.report.pdf')}
                         </button>
@@ -158,4 +159,4 @@ const DeathReportPage = () => {
     )
 }
 
-export default DeathReportPage
+export default ADGReportPage
