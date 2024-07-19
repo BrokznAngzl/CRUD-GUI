@@ -33,7 +33,7 @@ export const SidebarProvider = ({children}) => {
     const [sidebarItems, setSidebarItems] = useState(true);
     const [page, setPage] = useState('farm');
     const [editData, setEditData] = useState({});
-    const endpoint = 'http://localhost:8080/porkyapi'
+    const endpoint = 'http://localhost:8089/porkyapi'
 
     const pageComponents = {
         'farm': <FarmPage/>,
