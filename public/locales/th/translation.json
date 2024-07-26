@@ -1,6 +1,9 @@
 {
   "app.name": "การจัดการแบบคูลๆ",
 
+  "lang.eng.title": "อังกฤษ",
+  "lang.th.title": "ไทย",
+
   "global.farm": "ฟาร์ม",
   "global.customer": "ลูกค้า",
   "global.breeds": "สายพันธ์",

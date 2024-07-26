@@ -9,9 +9,7 @@ const MainContentComp = () => {
         <div className="flex flex-col flex-1 overflow-y-auto">
             <HeaderComp/>
             <div className="p-4">
-                {/*<h1 className="text-2xl font-bold">Welcome to my dashboard!</h1>*/}
-                {/*<p className="mt-2 text-gray-600">This is an example dashboard using Tailwind CSS.</p>*/}
-
+                <div className="mb-16"></div>
                 {pageComponents[page]}
 
             </div>
