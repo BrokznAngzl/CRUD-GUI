@@ -119,7 +119,7 @@ const DeathReportPage = () => {
     }, []);
 
     return (
-        <div className="w-full mt-16">
+        <div >
             {/* form */}
             <div className={"flex justify-between"}>
                 <QueryFormComp toggleForm={setQueryForm} showForm={queryForm} title={t('form.header.report.death')}
