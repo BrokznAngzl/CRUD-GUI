@@ -61,7 +61,7 @@ const AddBreedsPage = () => {
 
     return (
         <div>
-            <div className="text-center m-5 mt-24 w-2/4">
+            <div className="text-center m-5 w-2/4">
                 {alertBox && (
                     responseCode === 201 ? (
                         <SaveDataSuccessComp title={t('global.breeds')} />

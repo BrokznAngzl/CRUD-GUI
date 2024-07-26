@@ -1,6 +1,9 @@
 {
   "app.name": "porky management",
 
+  "lang.eng.title": "English",
+  "lang.th.title": "Thai",
+
   "global.farm": "farm",
   "global.customer": "customer",
   "global.breeds": "breeds",
