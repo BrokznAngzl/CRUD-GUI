@@ -9,21 +9,21 @@ https://porky-management.onrender.com/
 ## Previews
 
 ### Index
-![Index](preview1.png)
+![Index](prewview/preview1.png)
 
 ### Report
-![ADGReport](preview3.png)
+![ADGReport](prewview/preview3.png)
 
 ### Generate PDF
-![GeneratePDF](preview4.png)
+![GeneratePDF](prewview/preview4.png)
 
 ### Data Management
 
 #### Search Information
-![SearchResult](preview21.png)
+![SearchResult](prewview/preview21.png)
 
 #### Save Validate Information
-![Savesuccess](preview22.png)
+![Savesuccess](prewview/preview22.png)
 
 #### Save Invalidate Information
-![Savefailed](preview23.png)
+![Savefailed](prewview/preview23.png)
